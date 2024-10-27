@@ -1,107 +1,124 @@
-<?php 
+<?php
 /**
  * Load Google Fonts
  * @package GutSliderBlocks
  */
 
- if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
+declare(strict_types=1);
 
- if( ! class_exists( 'GutSlider_Load_Fonts' ) ) {
+namespace GutSlider\Fonts;
 
-    class GutSlider_Load_Fonts {
+defined('ABSPATH') || exit;
 
-        private static $all_fonts = [];
+final class FontLoader {
+    /**
+     * System fonts that don't need to be loaded from Google
+     */
+    private const SYSTEM_FONTS = [
+        'Default',
+        'Arial',
+        'Tahoma',
+        'Verdana',
+        'Helvetica',
+        'Times New Roman',
+        'Trebuchet MS',
+        'Georgia',
+    ];
 
-        /**
-         * Constructor
-         * return void 
-         */
-        public function __construct() {
-            add_action( 'wp_enqueue_scripts', [ $this, 'fonts_loader' ], 9999);
-            add_action( 'admin_enqueue_scripts', [ $this, 'fonts_loader' ], 9999 );
-            add_action('gutsliders_render_block', [ $this, 'font_generator' ]);
-        }
+    /**
+     * Google Fonts attribute string
+     */
+    private const FONT_WEIGHTS = ':100,200,300,400,500,600,700,800,900';
 
-        /**
-         * Font generator
-         * return void
-         */
-        public function font_generator( $block ) {
-            if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-                $attributes = $block['attrs'];
+    /**
+     * Store all fonts to be loaded
+     * @var array
+     */
+    private static array $fonts = [];
 
-                foreach ( $attributes as $key => $value ) {
-                    if ( ! empty( $value ) && strpos( $key, 'gutsliders_' ) === 0 && strpos( $key, 'FontFamily' ) !== false ) {
-                        self::$all_fonts[] = $value;
-                    }
-                }
-                
-                $this->fonts_loader();
-            }
-        }
-
-        /**
-         * Load fonts
-         * return void
-         */
-        public function fonts_loader() {
-            if ( is_array( self::$all_fonts ) && count( self::$all_fonts ) > 0 ) {
-
-                $fonts = array_filter( array_unique( self::$all_fonts ) );
-
-                if ( ! empty( $fonts ) ) {
-
-                    $system = array(
-                        'Default',
-                        'Arial',
-                        'Tahoma',
-                        'Verdana',
-                        'Helvetica',
-                        'Times New Roman',
-                        'Trebuchet MS',
-                        'Georgia',
-                    );
-
-                    $gfonts = '';
-                    $gfonts_attr = ':100,200,300,400,500,600,700,800,900';
-
-                    foreach ($fonts as $font) {
-                        if ( ! in_array( $font, $system, true) && ! empty( $font ) ) {
-                            $gfonts .= str_replace( ' ', '+', trim( $font ) ) . $gfonts_attr . '|';
-                        }
-                    }
-
-                    if (!empty($gfonts)) {
-                        $font_array = explode('|', $gfonts);
-                        
-                        foreach ($font_array as $font) {
-                            if (empty($font) || in_array($font, $system, true)) {
-                                continue;
-                            }
-
-                            $query_args = ['family' => $font];
-                            $font_handle = 'gutsliders-font-' . sanitize_title($font);
-                    
-                            wp_register_style(
-                                $font_handle,
-                                add_query_arg($query_args, '//fonts.googleapis.com/css'),
-                                [],
-                                GUTSLIDER_VERSION,
-                                'all'
-                            );
-                    
-                            wp_enqueue_style($font_handle);
-                        }
-                    }                                   
-
-                    // Reset.
-                    $gfonts = '';
-                }
-            }
-        }
-
+    /**
+     * Initialize the font loader
+     */
+    public static function init(): void {
+        $instance = new self();
+        $instance->setup_hooks();
     }
 
- }
+    /**
+     * Setup hooks
+     */
+    private function setup_hooks(): void {
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_fonts'], 10);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_fonts'], 10);
+        add_action('gutsliders_render_block', [$this, 'collect_fonts']);
+    }
 
-    new GutSlider_Load_Fonts();    // Initialize the class
+    /**
+     * Collect fonts from block attributes
+     * @param array $block
+     */
+    public function collect_fonts(array $block): void {
+        if (empty($block['attrs']) || !is_array($block['attrs'])) {
+            return;
+        }
+
+        foreach ($block['attrs'] as $key => $value) {
+            if ($this->is_font_family_attribute($key, $value)) {
+                self::$fonts[] = $value;
+            }
+        }
+    }
+
+    /**
+     * Check if attribute is a font family
+     * @param string $key
+     * @param mixed $value
+     * @return bool
+     */
+    private function is_font_family_attribute(string $key, $value): bool {
+        return !empty($value) && 
+               strpos($key, 'gutsliders_') === 0 && 
+               strpos($key, 'FontFamily') !== false;
+    }
+
+    /**
+     * Enqueue Google Fonts
+     */
+    public function enqueue_fonts(): void {
+        $google_fonts = $this->get_google_fonts();
+        
+        foreach ($google_fonts as $font) {
+            $this->enqueue_google_font($font);
+        }
+    }
+
+    /**
+     * Get filtered Google Fonts
+     * @return array
+     */
+    private function get_google_fonts(): array {
+        $unique_fonts = array_unique(self::$fonts);
+        return array_filter($unique_fonts, function($font) {
+            return !empty($font) && !in_array($font, self::SYSTEM_FONTS, true);
+        });
+    }
+
+    /**
+     * Enqueue individual Google Font
+     * @param string $font
+     */
+    private function enqueue_google_font(string $font): void {
+        $font_family = str_replace(' ', '+', trim($font)) . self::FONT_WEIGHTS;
+        $font_handle = 'gutsliders-font-' . sanitize_title($font);
+
+        wp_enqueue_style(
+            $font_handle,
+            esc_url_raw("https://fonts.googleapis.com/css?family={$font_family}&display=swap"),
+            [],
+            GUTSLIDER_VERSION
+        );
+    }
+}
+
+// Initialize the class
+add_action('init', [FontLoader::class, 'init']);

@@ -18,12 +18,19 @@ if( ! class_exists( 'GutSlider_Dynamic_Style' ) ) {
          */
         public function __construct() {
             add_filter( 'render_block', [ $this, 'collect_block_styles' ], 10, 2 );
-            add_action( 'wp_footer', [ $this, 'generate_and_enqueue_combined_css' ] );
+
+            if( wp_is_block_theme(  ) ) {
+                add_action( 'wp_enqueue_scripts', [ $this, 'generate_and_enqueue_combined_css' ] );
+            } else {
+                add_action( 'wp_footer', [ $this, 'generate_and_enqueue_combined_css' ] );
+            }
+
             
             $upload_dir = wp_upload_dir();
             $this->upload_dir = $upload_dir['basedir'] . '/gutslider-styles/';
             $this->upload_url = $upload_dir['baseurl'] . '/gutslider-styles/';
             
+            // Create directory if it doesn't exist
             if ( ! file_exists( $this->upload_dir ) ) {
                 wp_mkdir_p( $this->upload_dir );
             }
@@ -77,12 +84,19 @@ if( ! class_exists( 'GutSlider_Dynamic_Style' ) ) {
                 $wp_filesystem->put_contents($css_file_path, $minified_css, FS_CHMOD_FILE);
             }
 
+            // Check if file exists and is readable before enqueuing
+            if (file_exists($css_file_path) && is_readable($css_file_path)) {
+                $version = filemtime($css_file_path);
+            } else {
+                $version = time(); // Fallback version number
+            }
+
             // Enqueue the combined CSS file
             wp_enqueue_style(
                 'gutslider-combined-styles',
                 $css_file_url,
                 [],
-                filemtime($css_file_path)
+                $version
             );
         }
 

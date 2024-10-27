@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.6.2
-Stable tag: 2.7.5
+Stable tag: 2.7.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,7 +21,7 @@ With support for CSS animations and custom delays, GutSlider delivers smooth tra
 
 GutSlider comes packed with all the essential slider and carousel settings to give you full control over your designs. Whether you’re building a simple slider or a complex carousel, GutSlider makes it easy to create beautiful, responsive elements for your website.
 
-**Subscribe to get notification for GutSlider Pro: [Subscribe Now](https://gutslider.com/)**
+** Subscribe to get notification for GutSlider Pro: [Subscribe Now](https://gutslider.com/)**
 
 ### Video Tutorial
 [youtube http://www.youtube.com/watch?v=P9Zj4bSVq4I]
@@ -84,6 +84,12 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog ==
+= 2.7.6 =
+* Fixed: Duplicating issue fixed
+* Fixed: Delay scripts loading issue fixed
+* Added: Horizontal Alignment, Navigation, Pagination margin settings added
+* Improved: Code Quality, Simplify development process, Improve Performance
+
 = 2.7.5 =
 * Improved: Dynamic CSS generation 
 * Added: Blog Post Slider is back 
