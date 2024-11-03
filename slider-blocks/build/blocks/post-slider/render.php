@@ -70,7 +70,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
         ];
 
         ?>
-        <div <?php echo $block_props; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>">
+        <div <?php echo wp_kses_post( $block_props ); ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                     <?php
@@ -160,7 +160,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                                 <div class="gutslider-nav nav_inside <?php echo esc_attr( $atts['navPosition'] ); ?>">
                                     <?php if ( $atts['customNavIcon'] ) : ?>
                                         <div class="gutslider-prev">
-                                            <div class="gutslider-prev-icon">
+                                            <!-- <div class="gutslider-prev-icon"> -->
                                                 <?php
                                                     if ( $atts['navIconSource'] === 'library' ) {
                                                         echo wp_kses( gutslider_display_icon( $atts['navPrevIcon'] ), gutslider_allowed_svg_tags() ); // Ensure this function properly escapes output
@@ -168,18 +168,18 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                                                         echo wp_kses( $atts['customPrevSVG'], gutslider_allowed_svg_tags() );
                                                     }
                                                 ?>
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                         <div class="gutslider-next">
-                                            <div class="gutslider-next-icon">
+                                            <!-- <div class="gutslider-next-icon"> -->
                                                 <?php
-                                                if ( $atts['navIconSource'] === 'library' ) {
-                                                    echo wp_kses( gutslider_display_icon( $atts['navNextIcon'] ), gutslider_allowed_svg_tags() ); // Ensure this function properly escapes output
-                                                } else {
-                                                    echo wp_kses( $atts['customNextSVG'], gutslider_allowed_svg_tags() );
-                                                }
+                                                    if ( $atts['navIconSource'] === 'library' ) {
+                                                        echo wp_kses( gutslider_display_icon( $atts['navNextIcon'] ), gutslider_allowed_svg_tags() ); // Ensure this function properly escapes output
+                                                    } else {
+                                                        echo wp_kses( $atts['customNextSVG'], gutslider_allowed_svg_tags() );
+                                                    }
                                                 ?>
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                     <?php else : ?>
                                         <div class="swiper-button-prev"></div>
@@ -202,26 +202,26 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                         <div class="gutslider-nav nav_outside <?php echo esc_attr( $atts['navPosition'] ); ?>">
                             <?php if ( $atts['customNavIcon'] ) : ?>
                                 <div class="gutslider-prev">
-                                    <div class="gutslider-prev-icon">
+                                    <!-- <div class="gutslider-prev-icon"> -->
                                         <?php
-                                        if ( $atts['navIconSource'] === 'library' ) {
-                                            echo wp_kses( gutslider_display_icon( esc_attr( $atts['navPrevIcon'] ) ), gutslider_allowed_svg_tags() ); // Ensure this function properly escapes output
-                                        } else {
-                                            echo wp_kses( $atts['customPrevSVG'], gutslider_allowed_svg_tags() );
-                                        }
+                                            if ( $atts['navIconSource'] === 'library' ) {
+                                                echo wp_kses( gutslider_display_icon( esc_attr( $atts['navPrevIcon'] ) ), gutslider_allowed_svg_tags() ); // Ensure this function properly escapes output
+                                            } else {
+                                                echo wp_kses( $atts['customPrevSVG'], gutslider_allowed_svg_tags() );
+                                            }
                                         ?>
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                                 <div class="gutslider-next">
-                                    <div class="gutslider-next-icon">
+                                    <!-- <div class="gutslider-next-icon"> -->
                                         <?php
-                                        if ( $atts['navIconSource'] === 'library' ) {
-                                            echo wp_kses( gutslider_display_icon( esc_attr( $atts['navNextIcon'] ) ), gutslider_allowed_svg_tags() ); // Ensure this function properly escapes output
-                                        } else {
-                                            echo wp_kses( $atts['customNextSVG'], gutslider_allowed_svg_tags() );
-                                        }
+                                            if ( $atts['navIconSource'] === 'library' ) {
+                                                echo wp_kses( gutslider_display_icon( esc_attr( $atts['navNextIcon'] ) ), gutslider_allowed_svg_tags() ); // Ensure this function properly escapes output
+                                            } else {
+                                                echo wp_kses( $atts['customNextSVG'], gutslider_allowed_svg_tags() );
+                                            }
                                         ?>
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             <?php else : ?>
                                 <div class="swiper-button-prev"></div>

@@ -1,5 +1,12 @@
 [
     {
+        "version": "2.7.7",
+        "date": "03 Nov, 2024",
+        "changes": {
+            "Fixed": ["Style files loading issue", "Custom Navigation Responsive Style issue"]
+        }
+    },
+    {
         "version": "2.7.6",
         "date": "27 Oct, 2024",
         "changes": {

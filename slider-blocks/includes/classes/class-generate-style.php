@@ -25,7 +25,7 @@ if( ! class_exists( 'GutSlider_Dynamic_Style' ) ) {
                 add_action( 'wp_footer', [ $this, 'generate_and_enqueue_combined_css' ] );
             }
 
-            
+            // Set upload directory and URL
             $upload_dir = wp_upload_dir();
             $this->upload_dir = $upload_dir['basedir'] . '/gutslider-styles/';
             $this->upload_url = $upload_dir['baseurl'] . '/gutslider-styles/';
@@ -92,12 +92,15 @@ if( ! class_exists( 'GutSlider_Dynamic_Style' ) ) {
             }
 
             // Enqueue the combined CSS file
-            wp_enqueue_style(
-                'gutslider-combined-styles',
-                $css_file_url,
-                [],
-                $version
-            );
+            if( file_exists( $css_file_path ) ) {
+                wp_enqueue_style(
+                    'gutslider-combined-styles',
+                    $css_file_url,
+                    [],
+                    $version
+                );
+            }
+
         }
 
         /**
