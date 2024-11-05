@@ -17,8 +17,8 @@
          * return void 
          */
         public function __construct() {
-            add_action( 'wp_enqueue_scripts', [ $this, 'fonts_loader' ], 9999);
-            add_action( 'admin_enqueue_scripts', [ $this, 'fonts_loader' ], 9999 );
+            add_action( 'wp_enqueue_scripts', [ $this, 'fonts_loader' ], 10);
+            add_action( 'admin_enqueue_scripts', [ $this, 'fonts_loader' ], 10 );
             add_action('gutsliders_render_block', [ $this, 'font_generator' ]);
         }
 
