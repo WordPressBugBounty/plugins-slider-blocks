@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.6.2
-Stable tag: 2.7.8
+Stable tag: 2.7.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -84,6 +84,9 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog ==
+= 2.7.9 =
+* Added: Style option added for Static Slider Block
+* Added: Navigation Gap added
 = 2.7.8 =
 * Added: Object fit option added for logos carousel block
 
