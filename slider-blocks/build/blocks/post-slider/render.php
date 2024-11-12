@@ -22,7 +22,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
             'showBtn'              => true,
             'linkTitle'            => true,
             'titleTag'             => 'h2',
-            'btnLabel'             => __( 'Read More', 'gutslider' ),
+            'btnLabel'             => __( 'Read More', 'slider-blocks' ),
             'enableOverlay'        => true,
             'sliderType'           => 'slider',
             'uniqueId'             => '',
