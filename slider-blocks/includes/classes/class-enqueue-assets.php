@@ -11,16 +11,7 @@ class GutSlider_Assets {
      * Block types that require frontend assets
      * @var array
      */
-    private const FRONTEND_BLOCKS = [
-        'gutsliders/content-slider',
-        'gutsliders/any-content',
-        'gutsliders/testimonial-slider',
-        'gutsliders/post-slider',
-        'gutsliders/photo-carousel',
-        'gutsliders/logo-carousel',
-        'gutsliders/videos-carousel',
-        'gutsliders/interactive-slider'
-    ];
+    private $frontend_blocks;
 
     /**
      * Preview images for blocks
@@ -36,6 +27,19 @@ class GutSlider_Assets {
     public function __construct() {
         add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_assets'], 2);
         add_action('enqueue_block_assets', [$this, 'enqueue_assets']);
+
+        $this->frontend_blocks = apply_filters(
+            'gutslider_frontend_blocks',
+            [
+                'gutsliders/content-slider',
+                'gutsliders/any-content',
+                'gutsliders/testimonial-slider',
+                'gutsliders/post-slider',
+                'gutsliders/photo-carousel',
+                'gutsliders/logo-carousel',
+                'gutsliders/videos-carousel',
+            ]
+        );
     }
 
     public function enqueue_editor_assets() {
@@ -114,14 +118,23 @@ class GutSlider_Assets {
             GUTSLIDER_VERSION,
             true
         );
+
+        wp_localize_script(
+            'gutslider-swiper-script',
+            'gutslider_swiper',
+            [
+                'placeholder' => GUTSLIDER_URL . 'assets/images/placeholder.svg' 
+            ]
+        );
     }
 
     private function should_enqueue_frontend_assets(): bool {
-        foreach (self::FRONTEND_BLOCKS as $block) {
+        foreach ($this->frontend_blocks as $block) {
             if (has_block($block)) {
                 return true;
             }
         }
+
         return false;
     }
 }
