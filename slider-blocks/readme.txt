@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.7
-Stable tag: 2.8.1
+Stable tag: 2.8.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,7 +21,7 @@ With support for CSS animations and custom delays, GutSlider delivers smooth tra
 
 GutSlider comes packed with all the essential slider and carousel settings to give you full control over your designs. Whether you’re building a simple slider or a complex carousel, GutSlider makes it easy to create beautiful, responsive elements for your website.
 
-**GutSlider Pro: [Subscribe Now](https://gutslider.com/)**
+** Subscribe to get notification for GutSlider Pro: [Subscribe Now](https://gutslider.com/)**
 
 ### Video Tutorial
 [youtube http://www.youtube.com/watch?v=P9Zj4bSVq4I]
@@ -40,28 +40,14 @@ GutSlider comes packed with all the essential slider and carousel settings to gi
 - **Swiper JS Integration**: Uses Swiper JS for smooth, reliable slider performance without compromising speed.
 - **No jQuery Dependency**: Built without jQuery for modern, fast execution.
 
-### Available Blocks in Free Version
-* Static Content Slider/Carousel Block 
+### Available Blocks
+* Fixed Content Slider/Carousel Block 
 * Slide Any Content Slider/Carousel Block
 * Testimonial Slider Block
 * Photo Carousel Block
 * Logo Carousel Block
 * Before After Image Slider Block
 * Videos Carousel Block
-
-### Available Blocks in Pro Version
-* Shader Dyamic and Static Content Slider
-* Shutters Dyamic and Static Content Slider
-* Slicer Dyamic and Static Content Slider
-* Fashion Dyamic and Static Content Slider
-* Thumb Slider 
-* 3D Carousel
-* Material Carousel
-* Spring Carousel
-* Panorama Carousel 
-* Triple Carousel
-* Coming more...
-
 
 == Installation ==
 
@@ -98,6 +84,8 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog ==
+= 2.8.2 =
+* Add: Testimonial new preset added
 = 2.8.0 + 2.8.1 =
 * making ready for GutSlider Pro
 = 2.7.9 =
