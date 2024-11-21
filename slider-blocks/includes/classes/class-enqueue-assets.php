@@ -96,6 +96,12 @@ class GutSlider_Assets {
             $preview_urls[$key] = GUTSLIDER_URL . "assets/images/{$image}";
         }
         
+        // is Gutslider Pro active 
+        $is_pro_active = defined('GUTSLIDER_PRO_VERSION');
+
+        // add to the preview urls
+        $preview_urls['is_pro'] = $is_pro_active;
+
         wp_localize_script(
             'gutslider-blocks-modules-script',
             'gutslider_preview',

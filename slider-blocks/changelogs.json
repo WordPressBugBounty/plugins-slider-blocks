@@ -1,5 +1,12 @@
 [
     {
+        "version": "2.9.0",
+        "date": "21 Nov, 2024",
+        "changes": {
+            "Info": ["Stable Release for GutSlider Pro"]
+        }
+    },
+    {
         "version": "2.8.0",
         "date": "12 Nov, 2024",
         "changes": {

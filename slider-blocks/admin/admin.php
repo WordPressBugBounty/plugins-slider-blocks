@@ -26,7 +26,7 @@ if (!class_exists('GutSlider_Admin')) {
          * Constructor
          */
         public function __construct() {
-            add_action('admin_menu', [$this, 'admin_menu']);
+            add_action('admin_menu', [$this, 'admin_menu'], 20);
             add_action('admin_enqueue_scripts', [$this, 'admin_assets']);
             add_action('admin_init', [$this, 'initialize_admin']);
             add_action('rest_api_init', [$this, 'register_settings']);
@@ -64,6 +64,15 @@ if (!class_exists('GutSlider_Admin')) {
                 [$this, 'render_admin_page'],
                 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iMTIiIGZpbGw9IiNEOUQ5RDkiLz4KPHBhdGggZD0iTTE1IDdIMTEuODIzNUg5VjE3SDE1VjEyLjQxNjdIMTIuODgyNEgxMS44MjM1IiBzdHJva2U9IiMxRDIzMjciIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=',
                 100
+            );
+
+            add_submenu_page(
+                'gutslider-blocks',
+                __( 'Welcome', 'slider-blocks' ),
+                __( 'Welcome', 'slider-blocks' ),
+                'manage_options',
+                'gutslider-blocks',
+                array( $this, 'render_admin_page' )
             );
         }
     
@@ -148,7 +157,10 @@ if (!class_exists('GutSlider_Admin')) {
 
             wp_localize_script('gutslider-admin-script', 'gutslider', [
                 'version' => GUTSLIDER_VERSION,
-                'changeLogs' => $this->get_change_logs()
+                'changeLogs' => $this->get_change_logs(),
+                'nonce' => wp_create_nonce('gutslider_nonce'),
+                'isPro' => defined('GUTSLIDER_PRO_VERSION'),
+                'proVersion' => defined('GUTSLIDER_PRO_VERSION') ? GUTSLIDER_PRO_VERSION : '',
             ]);
         }
     }

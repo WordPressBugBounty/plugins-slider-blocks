@@ -33,6 +33,9 @@ if (!class_exists('GutSlider_Init')) {
             require_once trailingslashit(GUTSLIDER_DIR) . 'includes/classes/class-register-blocks.php';
             require_once trailingslashit(GUTSLIDER_DIR) . 'includes/classes/class-generate-style.php';
             require_once trailingslashit(GUTSLIDER_DIR) . 'includes/classes/class-load-fonts.php';
+
+            // api 
+            require_once trailingslashit(GUTSLIDER_DIR) . 'includes/api/api.php';
         }
     }
 }

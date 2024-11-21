@@ -4,87 +4,86 @@
  * @package GutSliderBlocks
  */
 
-declare(strict_types=1);
+ if( ! defined( 'ABSPATH' ) ) {
+ 	exit;
+ } 
 
-namespace GutSlider\Blocks;
-
-defined('ABSPATH') || exit;
-
-final class BlockRegistration {
-    /**
-     * Block configuration
-     */
-    private const BLOCKS = [
-        'content-slider'     => 'gut_fixed_content_slider',
-        'any-content'        => 'gut_any_content_slider',
-        'testimonial-slider' => 'gut_testimonial_slider',
-        'photo-carousel'     => 'gut_photo_carousel',
-        'logo-carousel'      => 'gut_logo_carousel',
-        'before-after'       => 'gut_before_after_slider',
-        'videos-carousel'    => 'gut_videos_carousel',
-        'post-slider'        => 'gut_post_slider'
-    ];
+ if( ! class_exists( 'GutSliderBlocks_Registration' ) ) {
 
     /**
-     * Initialize the block registration
+     * @since 1.0.0
+     * @package GutSlider Blocks
      */
-    public static function init(): void {
-        add_action('init', [new self(), 'register_blocks']);
-    }
+    class GutSliderBlocks_Registration {
 
-    /**
-     * Register active blocks
-     */
-    public function register_blocks(): void {
-        $active_blocks = $this->get_active_blocks();
-        
-        foreach ($active_blocks as $block) {
-            $this->register_single_block($block);
+        /**
+         * Constructor
+         * 
+         * @since 1.0.0
+         * @return void
+         */
+        public function __construct() {
+            $this->init();
         }
-    }
 
-    /**
-     * Get list of active blocks
-     * @return array
-     */
-    private function get_active_blocks(): array {
-        return array_filter(
-            array_keys(self::BLOCKS),
-            [$this, 'is_block_enabled']
-        );
-    }
-
-    /**
-     * Check if a block is enabled
-     * @param string $block_name
-     * @return bool
-     */
-    private function is_block_enabled(string $block_name): bool {
-        $option_name = self::BLOCKS[$block_name] ?? '';
-        return !empty($option_name) && get_option($option_name, true);
-    }
-
-    /**
-     * Register a single block
-     * @param string $block_name
-     */
-    private function register_single_block(string $block_name): void {
-        $block_path = $this->get_block_path($block_name);
-        
-        if (file_exists($block_path)) {
-            register_block_type($block_path);
+        /**
+         * Initialize the Class
+         * 
+         * @since 1.0.0
+         * @return void
+         */
+        private function init() {
+            add_action( 'init', array ( $this, 'register_blocks'  ) );
         }
+
+        /**
+         * Register Blocks
+         * 
+         * @since 1.0.0
+         * @return void
+         */
+        public function register_blocks() {
+
+            $blocks = get_option( 'gutslider_blocks', $this->get_gutslider_blocks() );
+        
+            if ( ! empty( $blocks ) && is_array( $blocks ) ) {
+                foreach ( $blocks as $block ) {
+                    $path = GUTSLIDER_DIR_PATH;
+        
+                    if( isset( $block['is_pro'] ) && $block['is_pro'] === true && defined( 'GUTSLIDER_PRO_PATH' ) ) {
+                        $path = GUTSLIDER_PRO_PATH;
+                    }
+        
+                    $block_name = trailingslashit( $path ) . 'build/blocks/' . $block['name'];
+                    $full_block_name = 'gutsliders/' . $block['name'];
+        
+                    if ( isset( $block['active'] ) && $block['active'] === false ) {
+                        // Check if the block type is registered before trying to unregister it
+                        if( WP_Block_Type_Registry::get_instance()->is_registered( $full_block_name ) ) {
+                            unregister_block_type( $full_block_name );
+                        }
+                    } else {
+                        if( file_exists( $block_name ) ) {
+                            // Check if the block is not already registered
+                            if ( ! WP_Block_Type_Registry::get_instance()->is_registered( $full_block_name ) ) {
+                                register_block_type( $block_name );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+         /**
+         * Get GutSlider Blocks
+         */
+        public function get_gutslider_blocks() {
+            return require GUTSLIDER_DIR_PATH . 'includes/api/blocks.php';
+        }
+
+
     }
 
-    /**
-     * Get the full path for a block
-     * @param string $block_name
-     * @return string
-     */
-    private function get_block_path(string $block_name): string {
-        return GUTSLIDER_DIR . "/build/blocks/{$block_name}";
-    }
-}
+ }
 
-// Initialize the class
-add_action('plugins_loaded', [BlockRegistration::class, 'init']);
+    new GutSliderBlocks_Registration(); // Initialize the class.

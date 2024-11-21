@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.7
-Stable tag: 2.8.2
+Stable tag: 2.9.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -11,17 +11,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 GutSlider is a custom Gutenberg Slider Block that allows you to create a slider or carousel easily. You don't need to have any coding knowledge.
 
 == Description ==
+
 GutSlider: The Ultimate Gutenberg Slider and Carousel Block Plugin
 
 GutSlider is a powerful custom **Gutenberg Slider Block** plugin designed to help you easily create stunning **sliders** and **carousels** without any coding experience. Whether you need a dynamic slider or a captivating carousel, GutSlider offers multiple types of slider blocks and carousel blocks to meet your design needs.
 
 Built with Gutenberg Native Components, GutSlider is both fast and lightweight, ensuring optimal performance by only loading scripts on pages where the block is used. Its highly customizable and intuitive interface provides a seamless drag-and-drop experience, allowing you to add any type of content with ease.
 
-With support for CSS animations and custom delays, GutSlider delivers smooth transitions that elevate the visual appeal of your website. The plugin utilizes Swiper JS for reliable and flexible slider functionality, without the need for jQuery dependencies.
-
-GutSlider comes packed with all the essential slider and carousel settings to give you full control over your designs. Whether you’re building a simple slider or a complex carousel, GutSlider makes it easy to create beautiful, responsive elements for your website.
-
-** Subscribe to get notification for GutSlider Pro: [Subscribe Now](https://gutslider.com/)**
+**[Get GutSlider Pro](https://gutslider.com/pricing)** | **[View Demos](https://gutslider.com)**
 
 ### Video Tutorial
 [youtube http://www.youtube.com/watch?v=P9Zj4bSVq4I]
@@ -40,15 +37,29 @@ GutSlider comes packed with all the essential slider and carousel settings to gi
 - **Swiper JS Integration**: Uses Swiper JS for smooth, reliable slider performance without compromising speed.
 - **No jQuery Dependency**: Built without jQuery for modern, fast execution.
 
-### Available Blocks
-* Fixed Content Slider/Carousel Block 
-* Slide Any Content Slider/Carousel Block
-* Testimonial Slider Block
-* Photo Carousel Block
-* Logo Carousel Block
-* Before After Image Slider Block
-* Videos Carousel Block
-
+### Free Blocks
+* **[Static](https://gutslider.com/static)** 
+* [**Flexible**](https://gutslider.com/flexible)
+* **[Testimonial Slider](https://gutslider.com/testimonial)**
+* **[Photo Carousel](https://gutslider.com/photo)**
+* **[Logo Carousel](https://gutslider.com/brand-logos)**
+* **[Before After Slider](https://gutslider.com/before-after)**
+* **[Videos Carousel](https://gutslider.com/videos)**
+* **[Blog Post](https://gutslider.com/post-slider)**
+### Pro Blocks 
+* **[Shaders Slider](https://gutslider.com/fashion-slider/)**
+* **[Shutters Slider](https://gutslider.com/shutters-slider/)**
+* **[Slicer Slider](https://gutslider.com/slicer-slider/)**
+* **[Fashion Slider](https://gutslider.com/fashion-slider/)**
+* **[Spring Carousel](https://gutslider.com/spring-carousel/)**
+* **[Frame Slider](https://gutslider.com/pricing/)**
+* **[Hover Slider](https://gutslider.com/pricing/)**
+* **[Material Carousel](https://gutslider.com/pricing/)**
+* **[Panorama Carousel](https://gutslider.com/pricing/)**
+* **[3D Carousel](https://gutslider.com/pricing/)**
+* **[Card Slider](https://gutslider.com/pricing/)**
+* **[Marquee Carousel](https://gutslider.com/pricing/)**
+* **[Woo Products Carousel](https://gutslider.com/pricing/)**
 == Installation ==
 
 This section describes how to install the plugin and get it working.
@@ -84,6 +95,9 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog ==
+= 2.9.0 =
+* Info: Stable Release for GutSlider Pro
+
 = 2.8.2 =
 * Add: Testimonial new preset added
 = 2.8.0 + 2.8.1 =
