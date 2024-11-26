@@ -101,6 +101,14 @@ return apply_filters( 'gutslider_blocks', [
         'active'      => true,
     ],
     [
+        'name'        => 'triple-slider',
+        'title'       => __('Triple Slider', 'slider-blocks'),
+        'description' => __('Interactive triple slider for static and dynamic content.', 'slider-blocks'),
+        'is_pro'      => true,
+        'demo_slug'   => 'triple-slider',
+        'active'      => true,
+    ],
+    [
         'name'        => 'spring-carousel',
         'title'       => __('Spring Carousel', 'slider-blocks'),
         'description' => __('Interactive spring carousel for static and dynamic content.', 'slider-blocks'),
@@ -108,4 +116,29 @@ return apply_filters( 'gutslider_blocks', [
         'demo_slug'   => 'spring-carousel',
         'active'      => true,
     ],
+    [
+        'name'        => 'panorama-carousel',
+        'title'       => __('Panorama Carousel', 'slider-blocks'),
+        'description' => __('Interactive panorama carousel for static and dynamic content.', 'slider-blocks'),
+        'is_pro'      => true,
+        'demo_slug'   => 'panorama-carousel',
+        'active'      => true,
+    ],
+    [
+        'name'        => 'three-d-carousel',
+        'title'       => __('3D Carousel', 'slider-blocks'),
+        'description' => __('Interactive 3D carousel for static and dynamic content.', 'slider-blocks'),
+        'is_pro'      => true,
+        'demo_slug'   => '3d-carousel',
+        'active'      => true,
+    ],
+    [
+        'name'        => 'card-slider',
+        'title'       => __('Card Slider', 'slider-blocks'),
+        'description' => __('Interactive card slider for static and dynamic content.', 'slider-blocks'),
+        'is_pro'      => true,
+        'demo_slug'   => 'card-slider',
+        'active'      => true,
+    ],
+    
 ] );

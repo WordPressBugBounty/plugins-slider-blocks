@@ -2,8 +2,8 @@
 Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
-Tested up to: 6.7
-Stable tag: 2.9.0
+Tested up to: 6.7.1
+Stable tag: 2.9.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -55,9 +55,10 @@ Built with Gutenberg Native Components, GutSlider is both fast and lightweight, 
 * **[Frame Slider](https://gutslider.com/pricing/)**
 * **[Hover Slider](https://gutslider.com/pricing/)**
 * **[Material Carousel](https://gutslider.com/pricing/)**
-* **[Panorama Carousel](https://gutslider.com/pricing/)**
-* **[3D Carousel](https://gutslider.com/pricing/)**
-* **[Card Slider](https://gutslider.com/pricing/)**
+* **[Panorama Carousel](https://gutslider.com/panorama-carousel/)**
+* **[3D Carousel](https://gutslider.com/3d-carousel/)**
+* **[Triple Slider](https://gutslider.com/triple-slider/)**
+* **[Card Slider](https://gutslider.com/card-slider/)**
 * **[Marquee Carousel](https://gutslider.com/pricing/)**
 * **[Woo Products Carousel](https://gutslider.com/pricing/)**
 == Installation ==
@@ -95,6 +96,8 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog ==
+= 2.9.1 =
+* Info: making compatible with GutSlider Pro v1.1.0
 = 2.9.0 =
 * Info: Stable Release for GutSlider Pro
 
