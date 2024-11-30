@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:       GutSlider - All in One Slider Blocks
+ * Plugin Name:       GutSlider - All in One Block Slider for Gutenberg
  * Description:       A collection of custom Gutenberg Slider Blocks to slide your content.
  * Requires at least: 6.5
  * Requires PHP:      7.4
- * Version:           2.9.1
+ * Version:           2.9.2
  * Author:            Gutenbergkits
  * Author URI:        https://gutenbergkits.com
  * License:           GPLv2 or later
@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 		 * return void
 		 */
 		private function define_constants() {
-			define( 'GUTSLIDER_VERSION', '2.9.1' );
+			define( 'GUTSLIDER_VERSION', '2.9.2' );
 			define( 'GUTSLIDER_URL', plugin_dir_url( __FILE__ ) );	
 			define('GUTSLIDER_DIR_PATH', plugin_dir_path(__FILE__));
 			define( 'GUTSLIDER_DIR', __DIR__ );

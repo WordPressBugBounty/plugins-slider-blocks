@@ -23,6 +23,7 @@ if (!class_exists('GutSlider_Init')) {
          * return void
          */
         public function includes() {
+
             // icons 
             require_once trailingslashit(GUTSLIDER_DIR) . 'includes/icons/icons.php';
             require_once trailingslashit(GUTSLIDER_DIR) . 'includes/icons/allowed-svg.php';

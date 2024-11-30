@@ -7,11 +7,6 @@
 if (!defined('ABSPATH')) exit;
 
 class GutSlider_Assets {
-    /**
-     * Block types that require frontend assets
-     * @var array
-     */
-    private $frontend_blocks;
 
     /**
      * Preview images for blocks
@@ -24,37 +19,57 @@ class GutSlider_Assets {
         'before_after'       => 'ba.svg'
     ];
 
+
+    /**
+     * Constructor
+     * return void
+     */
     public function __construct() {
         add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_assets'], 2);
         add_action('enqueue_block_assets', [$this, 'enqueue_assets']);
-
-        $this->frontend_blocks = apply_filters(
-            'gutslider_frontend_blocks',
-            [
-                'gutsliders/content-slider',
-                'gutsliders/any-content',
-                'gutsliders/testimonial-slider',
-                'gutsliders/post-slider',
-                'gutsliders/photo-carousel',
-                'gutsliders/logo-carousel',
-                'gutsliders/videos-carousel',
-            ]
-        );
     }
 
+    /**
+     * Enqueue editor assets
+     * return void
+     */
     public function enqueue_editor_assets() {
         $this->enqueue_asset('global');
         $this->enqueue_asset('modules', false);
         $this->localize_preview_images();
     }
 
+    /**
+     * Enqueue assets
+     * return void
+     */
     public function enqueue_assets() {
-        if (is_admin() || $this->should_enqueue_frontend_assets()) {
-            $this->enqueue_swiper_assets();
-        }
 
-        if (!is_admin() && has_block('gutsliders/photo-carousel')) {
-            wp_enqueue_script(
+        wp_register_style(
+            'gutslider-swiper-style',
+            GUTSLIDER_URL . 'assets/css/swiper-bundle.min.css',
+            [],
+            GUTSLIDER_VERSION
+        );
+
+        wp_register_script(
+            'gutslider-swiper-script',
+            GUTSLIDER_URL . 'assets/js/swiper-bundle.min.js',
+            [],
+            GUTSLIDER_VERSION,
+            true
+        );
+
+        wp_localize_script(
+            'gutslider-swiper-script',
+            'gutslider_swiper',
+            [
+                'placeholder' => GUTSLIDER_URL . 'assets/images/placeholder.svg' 
+            ]
+        );
+
+        if(!is_admin()) {
+            wp_register_script(
                 'gutslider-fslightbox',
                 GUTSLIDER_URL . 'assets/js/fslightbox.js',
                 [],
@@ -64,6 +79,12 @@ class GutSlider_Assets {
         }
     }
 
+    /**
+     * Enqueue asset
+     * @param string $name
+     * @param bool $enqueue_style
+     * return void
+     */
     private function enqueue_asset($name, $enqueue_style = true) {
         $asset_path = GUTSLIDER_DIR_PATH . "build/{$name}/{$name}.asset.php";
         
@@ -90,6 +111,10 @@ class GutSlider_Assets {
         }
     }
 
+    /**
+     * Localize preview images
+     * return void
+     */
     private function localize_preview_images() {
         $preview_urls = [];
         foreach (self::PREVIEW_IMAGES as $key => $image) {
@@ -108,41 +133,7 @@ class GutSlider_Assets {
             $preview_urls
         );
     }
-
-    private function enqueue_swiper_assets() {
-        wp_enqueue_style(
-            'gutslider-swiper-style',
-            GUTSLIDER_URL . 'assets/css/swiper-bundle.min.css',
-            [],
-            GUTSLIDER_VERSION
-        );
-
-        wp_enqueue_script(
-            'gutslider-swiper-script',
-            GUTSLIDER_URL . 'assets/js/swiper-bundle.min.js',
-            [],
-            GUTSLIDER_VERSION,
-            true
-        );
-
-        wp_localize_script(
-            'gutslider-swiper-script',
-            'gutslider_swiper',
-            [
-                'placeholder' => GUTSLIDER_URL . 'assets/images/placeholder.svg' 
-            ]
-        );
-    }
-
-    private function should_enqueue_frontend_assets(): bool {
-        foreach ($this->frontend_blocks as $block) {
-            if (has_block($block)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    
 }
 
 new GutSlider_Assets();

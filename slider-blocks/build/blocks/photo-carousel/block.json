@@ -34,6 +34,7 @@
   ],
   "viewScript": [
     "file:./frontend.js",
-    "gutslider-swiper-script"
+    "gutslider-swiper-script",
+    "gutslider-fslightbox"
   ]
 }

@@ -1,9 +1,9 @@
-=== GutSlider - All in One Block Slider ===
+=== GutSlider - All in One Block Slider for Gutenberg ===
 Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.7.1
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -59,7 +59,7 @@ Built with Gutenberg Native Components, GutSlider is both fast and lightweight, 
 * **[3D Carousel](https://gutslider.com/3d-carousel/)**
 * **[Triple Slider](https://gutslider.com/triple-slider/)**
 * **[Card Slider](https://gutslider.com/card-slider/)**
-* **[Marquee Carousel](https://gutslider.com/pricing/)**
+* **[Marquee Carousel](https://gutslider.com/marquee-carousel/)**
 * **[Woo Products Carousel](https://gutslider.com/pricing/)**
 == Installation ==
 
@@ -96,18 +96,26 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog ==
+= 2.9.2 =
+* Fixing: fixed slider not working issue on site editor. 
+* Fixing: swiper scripts loading issue fixed.
+
 = 2.9.1 =
 * Info: making compatible with GutSlider Pro v1.1.0
+
 = 2.9.0 =
 * Info: Stable Release for GutSlider Pro
 
 = 2.8.2 =
 * Add: Testimonial new preset added
+
 = 2.8.0 + 2.8.1 =
 * making ready for GutSlider Pro
+
 = 2.7.9 =
 * Added: Style option added for Static Slider Block
 * Added: Navigation Gap added
+
 = 2.7.8 =
 * Added: Object fit option added for logos carousel block
 
@@ -134,8 +142,10 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 
 = 2.7.3 =
 * Fixed: Security issue fixed
+
 = 2.7.2 = 
 * Added: Quick Sidebar Setting open option added
+
 = 2.7.1 =
 * Fixed: Swiper issue fixed.
 

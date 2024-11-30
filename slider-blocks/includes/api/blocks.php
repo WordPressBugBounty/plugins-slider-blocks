@@ -140,5 +140,13 @@ return apply_filters( 'gutslider_blocks', [
         'demo_slug'   => 'card-slider',
         'active'      => true,
     ],
+    [
+        'name'        => 'marquee-carousel',
+        'title'       => __('Marquee Carousel', 'slider-blocks'),
+        'description' => __('Interactive marquee carousel for static and dynamic content.', 'slider-blocks'),
+        'is_pro'      => true,
+        'demo_slug'   => 'card-slider',
+        'active'      => true,
+    ],
     
 ] );
