@@ -1,9 +1,9 @@
 === GutSlider - All in One Block Slider for Gutenberg ===
-Contributors: gkits, binsaifullah, milon0,jafor2, mehedi3, jobyaer23
+Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.7.1
-Stable tag: 2.9.3
+Stable tag: 2.9.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -96,6 +96,10 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog ==
+= 2.9.4 = 
+* Added: Image Focus point option is added static and testimonial blocks
+* Improved: Codes are optimized for Alignment Control
+
 = 2.9.3 =
 * Info: Making compatible with GutSlider Pro v1.2.0
 

@@ -164,5 +164,13 @@ return apply_filters( 'gutslider_blocks', [
         'demo_slug'   => 'tinder-slider',
         'active'      => true,
     ],
+    [
+        'name'        => 'hover-slider',
+        'title'       => __('Hover Slider', 'slider-blocks'),
+        'description' => __('Interactive hover slider for static and dynamic content.', 'slider-blocks'),
+        'is_pro'      => true,
+        'demo_slug'   => 'hover-slider',
+        'active'      => true,
+    ],
     
 ] );
