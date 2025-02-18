@@ -41,7 +41,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
             'navNextIcon'          => 'arrowRight',
             'customPrevSVG'        => '',
             'customNextSVG'        => '',
-            'excerptLength'        => 20,
+            'excerptLength'        => 20
         ];
 
         $atts = wp_parse_args( $attributes, $defaults );
@@ -50,6 +50,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
         $atts                  = array_map( 'sanitize_text_field', $atts );
         $atts['queryPosts']    = isset( $attributes['queryPosts'] ) ? $attributes['queryPosts'] : [];
         $atts['sliderOptions'] = isset( $attributes['sliderOptions'] ) ? $attributes['sliderOptions'] : [];
+        $atts['focusPoints']   = isset( $attributes['focusPoints'] ) ? $attributes['focusPoints'] : [];
 
         // Block classes
         $block_classes = [
@@ -75,13 +76,20 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                     <div class="swiper-wrapper">
                     <?php
                         if ( is_array( $atts['queryPosts'] ) && ! empty( $atts['queryPosts'] ) ) {
+                            $index = 0;
                             foreach ( $atts['queryPosts'] as $post ) {
+                                $index++;
                                 $post_title      = isset( $post['title']['rendered'] ) ? $post['title']['rendered'] : '';
                                 $post_excerpt    = isset( $post['excerpt']['rendered'] ) ? $post['excerpt']['rendered'] : '';
                                 $post_link       = isset( $post['link'] ) ? $post['link'] : '';
                                 $post_image_id   = isset( $post['featured_media'] ) ? $post['featured_media'] : '';
                                 $post_image      = wp_get_attachment_image_url( $post_image_id, 'full' );
-                                $bg_style        = $post_image ? sprintf( 'background-image: url(%s);', esc_url( $post_image ) ) : '';
+                                // Check if focusPoints is set and not empty
+                                $focusPoints = isset( $atts['focusPoints'] ) && is_array( $atts['focusPoints'] ) ? $atts['focusPoints'] : [];
+                                $bg_position = isset( $focusPoints[$index - 1] ) && isset( $focusPoints[$index - 1]['x'] ) && isset( $focusPoints[$index - 1]['y'] )
+                                ? sprintf( 'background-position: %d%% %d%%;', round( $focusPoints[$index - 1]['x'] * 100 ), round( $focusPoints[$index - 1]['y'] * 100 ) )
+                                : 'background-position: center center;';
+                                $bg_style = $post_image ? sprintf( 'background-image: url(%s); %s', esc_url( $post_image ), $bg_position ) : $bg_position;
                                 $post_categories = isset( $post['categories'] ) ? $post['categories'] : [];
 
                                 ?>

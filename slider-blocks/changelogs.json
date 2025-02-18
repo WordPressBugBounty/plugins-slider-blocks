@@ -1,5 +1,21 @@
 [
     {
+        "version": "2.9.5",
+        "date": "18 Feb, 2025",
+        "changes": {
+            "Fixed": ["Static block undefined issue"],
+            "Added": ["Focus point option for blog post slider block", "Carousel layout for testimonial block "]
+        }
+    },
+    {
+        "version": "2.9.4",
+        "date": "11 Feb, 2025",
+        "changes": {
+            "Added": ["Image Focus point option is added static and testimonial blocks"],
+            "Improved": ["Codes are optimized for Alignment Control"]
+        }
+    },
+    {
         "version": "2.9.3",
         "date": "9 Dec, 2024",
         "changes": {
