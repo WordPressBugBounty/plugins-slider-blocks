@@ -1,5 +1,14 @@
 [
     {
+        "version": "2.9.6",
+        "date": "02 March, 2025",
+        "changes": {
+            "Fixed": ["Global Style console error"],
+            "Added": ["Testimonial Photo inline position"],
+            "Improved": ["Responsive view in editor"]
+        }
+    },
+    {
         "version": "2.9.5",
         "date": "18 Feb, 2025",
         "changes": {

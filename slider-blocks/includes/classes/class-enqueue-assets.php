@@ -16,7 +16,8 @@ class GutSlider_Assets {
         'content'            => 'content.svg',
         'photo_carousel'     => 'photo.svg',
         'testimonial_slider' => 'testimonial.svg',
-        'before_after'       => 'ba.svg'
+        'before_after'       => 'ba.svg',
+        'placeholder'        => 'placeholder.svg',
     ];
 
 
@@ -34,7 +35,7 @@ class GutSlider_Assets {
      * return void
      */
     public function enqueue_editor_assets() {
-        $this->enqueue_asset('global');
+        $this->enqueue_asset('global', true, true);
         $this->enqueue_asset('modules', false);
         $this->localize_preview_images();
     }
@@ -85,29 +86,48 @@ class GutSlider_Assets {
      * @param bool $enqueue_style
      * return void
      */
-    private function enqueue_asset($name, $enqueue_style = true) {
+    private function enqueue_asset($name, $enqueue_style = true, $register_mode = false) {
         $asset_path = GUTSLIDER_DIR_PATH . "build/{$name}/{$name}.asset.php";
         
         if (file_exists($asset_path)) {
             $dependency_file = include $asset_path;
             if (is_array($dependency_file) && !empty($dependency_file)) {
-                wp_enqueue_script(
-                    "gutslider-blocks-{$name}-script",
-                    GUTSLIDER_URL . "build/{$name}/{$name}.js",
-                    $dependency_file['dependencies'] ?? [],
-                    $dependency_file['version'] ?? GUTSLIDER_VERSION,
-                    $name === 'global'
-                );
+                if($register_mode) {
+                    wp_register_script(
+                        "gutslider-blocks-{$name}-script",
+                        GUTSLIDER_URL . "build/{$name}/{$name}.js",
+                        $dependency_file['dependencies'] ?? [],
+                        $dependency_file['version'] ?? GUTSLIDER_VERSION,
+                        $name === 'global'
+                    );
+                } else {
+                    wp_enqueue_script(
+                        "gutslider-blocks-{$name}-script",
+                        GUTSLIDER_URL . "build/{$name}/{$name}.js",
+                        $dependency_file['dependencies'] ?? [],
+                        $dependency_file['version'] ?? GUTSLIDER_VERSION,
+                        $name === 'global'
+                    );
+                }
             }
         }
 
         if ($enqueue_style) {
-            wp_enqueue_style(
-                "gutslider-blocks-{$name}-style",
-                GUTSLIDER_URL . "build/{$name}/{$name}.css",
-                [],
-                GUTSLIDER_VERSION
-            );
+            if($register_mode) {
+                wp_register_style(
+                    "gutslider-blocks-{$name}-style",
+                    GUTSLIDER_URL . "build/{$name}/{$name}.css",
+                    [],
+                    GUTSLIDER_VERSION
+                );
+            } else {
+                wp_enqueue_style(
+                    "gutslider-blocks-{$name}-style",
+                    GUTSLIDER_URL . "build/{$name}/{$name}.css",
+                    [],
+                    GUTSLIDER_VERSION
+                );
+            }
         }
     }
 

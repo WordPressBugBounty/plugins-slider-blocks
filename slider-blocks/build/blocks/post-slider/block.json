@@ -22,11 +22,13 @@
   "textdomain": "slider-blocks",
   "editorScript": [
     "file:./index.js",
-    "gutslider-swiper-script"
+    "gutslider-swiper-script",
+    "gutslider-blocks-global-script"
   ],
   "editorStyle": [
     "file:./index.css",
-    "gutslider-swiper-style"
+    "gutslider-swiper-style",
+    "gutslider-blocks-global-style"
   ],
   "style": [
     "file:./style-index.css",
