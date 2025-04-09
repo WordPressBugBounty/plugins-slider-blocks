@@ -124,27 +124,6 @@ if (!class_exists('GutSlider_Admin')) {
         }
 
         /**
-         * Get GutSlider changelogs
-         * @return array|false Changelog data or false on failure
-         */
-        private function get_change_logs() {
-            $changelog_file = GUTSLIDER_DIR . '/changelogs.json';
-            
-            if (!file_exists($changelog_file)) {
-                return false;
-            }
-            
-            global $wp_filesystem;
-            if (empty($wp_filesystem)) {
-                require_once(ABSPATH . '/wp-admin/includes/file.php');
-                WP_Filesystem();
-            }
-            
-            $changelogs = $wp_filesystem->get_contents($changelog_file);
-            return json_decode($changelogs, true);
-        }
-
-        /**
          * Enqueue admin assets
          */
         private function enqueue_admin_assets() {
@@ -152,12 +131,12 @@ if (!class_exists('GutSlider_Admin')) {
             $dependencies = file_exists($dependency_file) ? require_once($dependency_file) : [];
 
             wp_enqueue_style('gutslider-admin-style', GUTSLIDER_URL . 'build/admin/style-admin.css', [], GUTSLIDER_VERSION);
-            wp_enqueue_script('gutslider-admin-script', GUTSLIDER_URL . 'build/admin/admin.js', $dependencies['dependencies'], GUTSLIDER_VERSION, true);
+            $deps = isset($dependencies['dependencies']) ? $dependencies['dependencies'] : [];
+            wp_enqueue_script('gutslider-admin-script', GUTSLIDER_URL . 'build/admin/admin.js', $deps, GUTSLIDER_VERSION, true);
             wp_enqueue_style('wp-components');
 
             wp_localize_script('gutslider-admin-script', 'gutslider', [
                 'version' => GUTSLIDER_VERSION,
-                'changeLogs' => $this->get_change_logs(),
                 'nonce' => wp_create_nonce('gutslider_nonce'),
                 'isPro' => defined('GUTSLIDER_PRO_VERSION'),
                 'proVersion' => defined('GUTSLIDER_PRO_VERSION') ? GUTSLIDER_PRO_VERSION : '',
