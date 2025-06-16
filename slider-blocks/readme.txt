@@ -3,7 +3,7 @@ Contributors: gkits, binsaifullah, milon0,jafor2, jobyaer23
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.8
-Stable tag: 2.9.10
+Stable tag: 2.9.11
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -96,6 +96,9 @@ No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider perfo
 == Screenshots ==
 
 == Changelog == 
+= 2.9.11 =
+* Fixed: Photo Carousel Lightbox image source issue fixed
+
 = 2.9.10 =
 * Added: Centered mode is enabled for static and flexible slider block
 
