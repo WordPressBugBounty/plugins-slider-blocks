@@ -41,7 +41,10 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
             'navNextIcon'          => 'arrowRight',
             'customPrevSVG'        => '',
             'customNextSVG'        => '',
-            'excerptLength'        => 20
+            'excerptLength'        => 20,
+            'enableRemoteNav'      => false,
+            'remotePrevSelector'   => '',
+            'remoteNextSelector'   => ''
         ];
 
         $atts = wp_parse_args( $attributes, $defaults );
@@ -71,7 +74,14 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
         ];
 
         ?>
-        <div <?php echo wp_kses_post( $block_props ); ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>">
+        <div <?php echo wp_kses_post( $block_props ); ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>"
+            <?php
+                if ( $atts['enableRemoteNav'] ) {
+                    echo 'data-rprev="' . esc_attr( $atts['remotePrevSelector'] ) . '" ';
+                    echo 'data-rnext="' . esc_attr( $atts['remoteNextSelector'] ) . '" ';
+                }
+            ?>
+        >
                 <div class="swiper">
                     <div class="swiper-wrapper">
                     <?php
@@ -163,7 +173,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                     ?>
                     </div>
                     <?php 
-                        if( $atts['showNavigation'] === '1' && $atts['navContainerPosition'] === 'nav_inside' ) {
+                        if( $atts['showNavigation'] === '1' && $atts['navContainerPosition'] === 'nav_inside' && $atts['enableRemoteNav'] !== '1' ) {
                             ?>
                                 <div class="gutslider-nav nav_inside <?php echo esc_attr( $atts['navPosition'] ); ?>">
                                     <?php if ( $atts['customNavIcon'] ) : ?>
@@ -206,7 +216,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                     ?>
                 </div>
                 <?php 
-                    if ( $atts['showNavigation'] === '1' && $atts['navContainerPosition'] === 'nav_outside' ) : ?>
+                    if ( $atts['showNavigation'] === '1' && $atts['navContainerPosition'] === 'nav_outside' && $atts['enableRemoteNav'] !== '1' ) : ?>
                         <div class="gutslider-nav nav_outside <?php echo esc_attr( $atts['navPosition'] ); ?>">
                             <?php if ( $atts['customNavIcon'] ) : ?>
                                 <div class="gutslider-prev">
