@@ -44,7 +44,8 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
             'excerptLength'        => 20,
             'enableRemoteNav'      => false,
             'remotePrevSelector'   => '',
-            'remoteNextSelector'   => ''
+            'remoteNextSelector'   => '',
+            'detachContent'       => false, // New attribute for detaching content
         ];
 
         $atts = wp_parse_args( $attributes, $defaults );
@@ -72,6 +73,10 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
             'swiper-slide',
             $atts['sliderType'] === 'slider' ? 'slide-mode' : ''
         ];
+
+        if ( ! empty( $atts['detachContent'] ) ) {
+            $swiper_classes[] = 'detach-content';
+        }
 
         ?>
         <div <?php echo wp_kses_post( $block_props ); ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>"
@@ -102,13 +107,33 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                                 $bg_style = $post_image ? sprintf( 'background-image: url(%s); %s', esc_url( $post_image ), $bg_position ) : $bg_position;
                                 $post_categories = isset( $post['categories'] ) ? $post['categories'] : [];
 
+                                // create object-position style
+                                $object_position = isset( $focusPoints[$index - 1] ) && isset( $focusPoints[$index - 1]['x'] ) && isset( $focusPoints[$index - 1]['y'] )
+                                ? sprintf( 'object-position: %d%% %d%%;', round( $focusPoints[$index - 1]['x'] * 100 ), round( $focusPoints[$index - 1]['y'] * 100 ) )
+                                : 'object-position: center center;';
+
                                 ?>
                                 <div class="<?php echo esc_attr( implode( ' ', $swiper_classes ) ); ?>">
-                                    <div class="swiper-container-outer" style="<?php echo esc_attr( $bg_style ); ?>">
+                                    <div class="swiper-container-outer"
+                                        <?php if ( ! $atts['detachContent'] ) : ?>
+                                            style="<?php echo esc_attr( $bg_style ); ?>"
+                                        <?php endif; ?>
+                                    >
                                         <?php if ( $atts['enableOverlay'] ) : ?>
                                             <div class="gutslider-overlay"></div>
                                         <?php endif; ?>
-                                        <div class="gutslider-content-wrapper">
+                                        <?php 
+                                            if ( $atts['detachContent'] && $post_image ) {
+                                                ?>
+                                                    <a class="detached-featured-image" href="<?php echo esc_url( $post_link ); ?>">
+                                                        <img src="<?php echo esc_url( $post_image ); ?>" alt="<?php echo esc_attr( $post_title ); ?>" 
+                                                        style="<?php echo esc_attr( $object_position ); ?>"
+                                                        />
+                                                    </a>
+                                                <?php
+                                            }
+                                        ?>
+                                        <div class="gutslider-content-wrapper<?php echo $atts['detachContent'] ? ' detach-content' : ''; ?>">
                                             <div class="gutslider-content-inner">
                                                 <?php if ( $atts['showCat'] ) : ?>
                                                     <div class="post-categories <?php echo esc_attr( $atts['catAnimation'] ); ?>">
