@@ -1,0 +1,31 @@
+// Responsive Button Control
+.gkits-res-btn {
+	.components-button-group {
+		gap: 3px;
+	}
+
+	.gkits-device-btn {
+		padding: 2px !important;
+		margin: 0;
+		min-height: auto !important;
+		width: 18px;
+		height: 18px !important;
+		border-radius: 50% !important;
+		justify-content: center;
+		box-shadow: none !important;
+		&:focus {
+			outline: none;
+			box-shadow: none !important;
+		}
+		svg {
+			width: 14px;
+			height: 8px;
+		}
+		&.gkits-active {
+			background: #bee7fb;
+			svg {
+				fill: #004365;
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+.gkits-editor-settings {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    button {
+        background: #007cba;
+        border: none;
+        width: 30px;
+        height: 30px;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+.wp-block[data-type^='gutsliders'] {
+    position: relative;
+    &:hover {
+        outline: 1px solid #007cba;
+        box-sizing: border-box;
+        .gkits-editor-settings {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

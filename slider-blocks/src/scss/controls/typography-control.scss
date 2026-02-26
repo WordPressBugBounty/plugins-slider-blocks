@@ -1,0 +1,55 @@
+.gkits-control-container {
+	&.typography-control {
+		.components-base-control {
+			margin: 0;
+		}
+		.afterg-btn {
+			width: 30px;
+			height: 30px;
+			background: #eeeeee;
+			min-width: auto;
+			border-radius: 50%;
+			svg {
+				width: 15px;
+				fill: #007cba;
+				stroke: #007cba;
+			}
+		}
+	}
+}
+
+.gkits-typography-panel {
+	width: 250px;
+	padding: 15px;
+	box-sizing: border-box;
+
+	.gkits-units-wrapper {
+		display: flex;
+		gap: 5px;
+	}
+
+	.unit-btn {
+		border: none;
+		background: none;
+		padding: 0;
+		text-transform: uppercase;
+		font-size: 11px;
+		font-weight: 500;
+	}
+
+	.gkits-controls-body {
+		margin-top: 8px;
+	}
+
+	.gkits-reset-button.range-btn {
+		transform: translateY(-2px);
+	}
+
+	.gkits-btn-group {
+		&.text-transform-btn-group {
+			.components-button {
+				text-transform: none !important;
+			}
+		}
+	}
+}

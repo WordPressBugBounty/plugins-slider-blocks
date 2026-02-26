@@ -1,0 +1,11 @@
+.gkits-border-style {
+	.components-flex {
+		flex-direction: row !important;
+	}
+	.components-flex-item {
+		flex: 1 1 auto !important;
+	}
+	.components-select-control__input {
+		min-width: 100px;
+	}
+}

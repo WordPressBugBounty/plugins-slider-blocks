@@ -1,0 +1,50 @@
+.gutslider-inspector-notice {
+    background: #eeeeee;
+    padding: 15px;
+    box-sizing: border-box;
+    border-top: 1px solid #e0e0e0;
+
+    p.info {
+        color: #372386;
+        position: relative;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        font-style: italic;
+        .note-title {
+            display: inline-block;
+            margin-right: 5px;
+            font-weight: 600;
+            font-style: normal;
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        flex-direction: row;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+            background: #fff;
+            padding: 10px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 12px;
+            color: #000;
+            font-weight: 400;
+        }
+
+        svg {
+            width: 20px;
+            fill: #6141e7;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+}

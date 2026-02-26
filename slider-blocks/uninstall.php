@@ -14,4 +14,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 require_once plugin_dir_path( __FILE__ ) . 'slider-blocks.php';
 
 // Cleanup the plugin data.
-GutSliderBlocks::cleanup();
+GutSlider\Plugin::cleanup();

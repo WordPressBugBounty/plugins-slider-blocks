@@ -1,0 +1,144 @@
+/*
+* Editor CSS:
+*/
+.gkits-header-tabs {
+    //  Header Tab CSS
+    .components-button-group {
+        display: flex;
+        .tab-button {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: none !important;
+            border-top: 1px solid #e0e0e0;
+            border-left: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            height: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 0 !important;
+            background: #f5f5f5;
+            &.setting-tab {
+                border-right: 1px solid #e0e0e0;
+                border-left: 0;
+            }
+            &.active {
+                background: #fff;
+                color: #007cba;
+                border-top-color: #007cba;
+                border-top-width: 2px;
+            }
+        }
+    }
+
+    // common css
+    .components-input-control__backdrop {
+        border: 1px solid #e0e0e0 !important;
+    }
+
+    // number input control
+    .components-input-control__input {
+        font-size: 12px !important;
+        text-align: center !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    // rangle control
+    .components-base-control__field {
+        margin-bottom: 0 !important;
+    }
+    .components-range-control__wrapper span[aria-hidden='true'] {
+        height: 2px !important;
+    }
+    .components-range-control__thumb-wrapper {
+        height: 8px !important;
+        width: 8px !important;
+        margin-top: 10px !important;
+
+        span:before {
+            height: 12px !important;
+            width: 12px !important;
+            left: -2px !important;
+            top: -5px !important;
+        }
+    }
+    .components-simple-tooltip {
+        display: none !important;
+    }
+
+    .components-range-control__track,
+    .components-range-control__thumb-wrapper {
+        background-color: #007cba;
+    }
+
+    // text input control
+    .components-text-control__input {
+        border: 1px solid #e0e0e0 !important;
+        height: 36px !important;
+    }
+
+    // toggle control
+    .components-form-toggle .components-form-toggle__input:focus + .components-form-toggle__track {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .components-form-toggle.is-checked .components-form-toggle__track {
+        background-color: #007cba !important;
+    }
+
+    // textarea
+    textarea {
+        border: 1px solid #e0e0e0 !important;
+        resize: none !important;
+    }
+    .components-base-control__help {
+        font-style: italic !important;
+    }
+
+    .components-button.slider-blocks-add-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #007cba;
+        width: 100%;
+        margin-bottom: 10px;
+        color: #fff;
+        &:active {
+            color: #fff;
+        }
+        svg path {
+            stroke: #fff;
+        }
+    }
+
+    .slider-blocks-upload-btn {
+        width: 100%;
+        height: 130px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+
+    // panel title
+    .components-panel__body.is-opened > .components-panel__body-title {
+        margin-bottom: 16px !important;
+    }
+
+    // select contrl
+    .components-select-control__input {
+        height: 36px !important;
+    }
+
+    .components-input-control__label {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        text-transform: capitalize !important;
+    }
+}

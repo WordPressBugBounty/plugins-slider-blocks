@@ -1,0 +1,19 @@
+.gkits-tip-control {
+    margin-bottom: 16px;
+    p {
+        font-style: italic;
+        margin-bottom: 0;
+        font-size: 12px;
+        line-height: 1.4;
+        color: #007cba;
+    }
+    .components-tip {
+        align-items: center;
+        display: flex;
+        svg {
+            fill: #f0b849;
+            flex-shrink: 0;
+            margin-right: 5px;
+        }
+    }
+}

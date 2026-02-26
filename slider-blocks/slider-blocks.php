@@ -1,154 +1,78 @@
 <?php
 /**
- * Plugin Name:       GutSlider - All in One Block Slider for Gutenberg
+ * Plugin Name:       Slider Blocks
  * Description:       A collection of custom Gutenberg Slider Blocks to slide your content.
  * Requires at least: 6.5
  * Requires PHP:      7.4
- * Version:           2.9.17
- * Author:            Gutenbergkits
- * Author URI:        https://gutenbergkits.com
+ * Version:           2.11.1
+ * Author:            Binsaifullah
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       slider-blocks
  *
+ * @package GutSlider
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
-
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
- * GutSlider Blocks Final Class
- * 
- * @package GutSliderBlocks
+ * Plugin version constant.
+ *
  * @since 1.0.0
+ * @var string
  */
+define( 'GUTSLIDER_VERSION', '2.11.1' );
 
- if( ! class_exists( 'GutSliderBlocks' ) ) {
+/**
+ * Plugin directory URL with trailing slash.
+ *
+ * @since 1.0.0
+ * @var string
+ */
+define( 'GUTSLIDER_URL', plugin_dir_url( __FILE__ ) );
 
-	final class GutSliderBlocks {
+/**
+ * Plugin directory path with trailing slash.
+ *
+ * @since 1.0.0
+ * @var string
+ */
+define( 'GUTSLIDER_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
-		// Plugin version 
-		public $version = '2.9.17';
+/**
+ * Plugin directory path without trailing slash.
+ *
+ * @since 1.0.0
+ * @var string
+ */
+define( 'GUTSLIDER_DIR', __DIR__ );
 
-		// Instance of the class
-		/**
-		 * @var GutSliderBlocks
-		 */
-		private static $instance = null;
+// Load PSR-4 autoloader.
+require_once GUTSLIDER_DIR . '/includes/Autoloader.php';
+( new GutSlider_Autoloader( GUTSLIDER_DIR . '/includes/' ) )->register();
 
-		/**
-		 * The constructor function initializes constants, includes necessary files, loads a text domain, and
-		 * sets up activation redirection for a PHP class.
-		 */
-		private function __construct() {
-			$this->define_constants();
-			$this->includes();
-			add_action( 'init', [ $this, 'load_textdomain' ] );
-			register_activation_hook( __FILE__, [ $this, 'set_activation_redirect' ] );
-			add_action( 'admin_init', [ $this, 'redirect_to_welcome_page' ] );
-		}
-	
-		/**
-		 * Define the plugin constants
-		 * return void
-		 */
-		private function define_constants() {
-			define( 'GUTSLIDER_VERSION', $this->version );
-			define( 'GUTSLIDER_URL', plugin_dir_url( __FILE__ ) );	
-			define('GUTSLIDER_DIR_PATH', plugin_dir_path(__FILE__));
-			define( 'GUTSLIDER_DIR', __DIR__ );
-		}
+// Load backward-compatibility global functions.
+require_once GUTSLIDER_DIR . '/includes/compat.php';
 
-		/**
-		 * Initialize the plugin
-		 * return GutSliderBlocks
-		 */
-		public static function init() {
-			if( is_null( self::$instance ) ) {
-				self::$instance = new self();
-			}
-			return self::$instance;
-		}
+// Load admin (outside refactoring scope).
+require_once GUTSLIDER_DIR . '/admin/admin.php';
 
-		/**
-		 * Include the files
-		 * return void
-		 */
-		public function includes() {
-			require_once GUTSLIDER_DIR . '/includes/init.php';
-			require_once GUTSLIDER_DIR . '/admin/admin.php';
-		}
+// Register activation and deactivation hooks.
+register_activation_hook( __FILE__, array( GutSlider\Plugin::class, 'on_activation' ) );
+register_deactivation_hook( __FILE__, array( GutSlider\Plugin::class, 'cleanup' ) );
 
-		/**
-		 * Load the plugin text domain
-		 * return void
-		 */
-		public function load_textdomain() {
-			load_plugin_textdomain( 'slider-blocks', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-		}
+/**
+ * Return the main plugin singleton instance.
+ *
+ * @since 1.0.0
+ *
+ * @return GutSlider\Plugin The plugin instance.
+ */
+function gutsliderblocks(): GutSlider\Plugin {
+	return GutSlider\Plugin::get_instance();
+}
 
-		/**
-		 * Set the activation redirect
-		 * return void
-		 */
-		public function set_activation_redirect() {
-			add_option( 'gutsliderblocks_do_activation_redirect', true );
-		}
-
-		/**
-		 * Redirect to the welcome page
-		 * return void
-		 */
-		public function redirect_to_welcome_page() {
-			if ( is_admin() && get_option( 'gutsliderblocks_do_activation_redirect', false ) ) {
-				delete_option( 'gutsliderblocks_do_activation_redirect' );
-				wp_safe_redirect( admin_url( 'admin.php?page=gutslider-blocks' ) );
-				exit; // Added exit after redirect
-			}
-		} 
-		
-		/**
-		 * Cleanup the plugin data
-		 * return void
-		 */
-		public static function cleanup() {
-			$upload_dir = wp_upload_dir();
-            $css_dir = $upload_dir['basedir'] . '/gutslider-styles';
-
-            if ( file_exists( $css_dir ) ) {
-                global $wp_filesystem;
-                if ( empty( $wp_filesystem ) ) {
-                    require_once( ABSPATH . '/wp-admin/includes/file.php' );
-                    WP_Filesystem();
-                }
-
-                $files = glob( $css_dir . '/*' );
-                foreach ( $files as $file ) {
-                    if ( is_file( $file ) ) {
-                        $wp_filesystem->delete( $file );
-                    }
-                }
-                $wp_filesystem->rmdir( $css_dir );
-            }
-
-            // Remove parent directory if it's empty
-            $parent_dir = dirname( $css_dir );
-            if ( file_exists( $parent_dir ) && ( count( glob( "$parent_dir/*" ) ) === 0 ) ) {
-                $wp_filesystem->rmdir( $parent_dir );
-            }
-		}
-
-	}
-
- }
-
- /**
-  * Initialize the GutSliderBlocks
-  * return GutSliderBlocks
-  */
-  function gutsliderblocks() {
-	  return GutSliderBlocks::init();
-  }
-
-  // kick-off the plugin
-  gutsliderblocks();
+// Boot the plugin.
+gutsliderblocks();

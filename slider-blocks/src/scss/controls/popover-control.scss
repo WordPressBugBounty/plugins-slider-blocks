@@ -1,0 +1,84 @@
+.gkits-control-container {
+    &.popover-control {
+        .components-base-control {
+            margin-bottom: 0 !important;
+        }
+        .components-button.popover-expand {
+            border: 1px solid #e0e0e0;
+            padding: 0 5px;
+            height: 28px;
+            background: #eeeeee !important;
+            &.active {
+                border-color: #007cba !important;
+                svg {
+                    fill: #007cba;
+                }
+            }
+        }
+    }
+}
+
+.gkits-popover-panel {
+    padding: 15px;
+    min-width: 280px;
+
+    .slider-blocks-upload-btn {
+        width: 100%;
+        height: 130px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+
+    // rangle control
+    .components-base-control__field {
+        margin-bottom: 0 !important;
+    }
+    .components-range-control__wrapper span[aria-hidden='true'] {
+        height: 2px !important;
+    }
+    .components-range-control__thumb-wrapper {
+        height: 8px !important;
+        width: 8px !important;
+        margin-top: 10px !important;
+
+        span:before {
+            height: 12px !important;
+            width: 12px !important;
+            left: -2px !important;
+            top: -5px !important;
+        }
+    }
+    .components-simple-tooltip {
+        display: none !important;
+    }
+
+    .components-range-control__track,
+    .components-range-control__thumb-wrapper {
+        background-color: #007cba;
+    }
+
+    // text input control
+    .components-text-control__input {
+        border: 1px solid #e0e0e0 !important;
+        height: 36px !important;
+    }
+
+    // toggle control
+    .components-form-toggle .components-form-toggle__input:focus + .components-form-toggle__track {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    // textarea
+    textarea {
+        border: 1px solid #e0e0e0 !important;
+        resize: none !important;
+    }
+    .components-base-control__help {
+        font-style: italic !important;
+    }
+}

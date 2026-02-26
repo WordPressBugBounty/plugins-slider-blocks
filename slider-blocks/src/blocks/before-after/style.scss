@@ -1,0 +1,159 @@
+/*
+* Style Works for both Editor and Frontend
+*/
+
+.gutslider-ba-item {
+    position: relative;
+    height: 100%;
+    .gutslider-label {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 8px 16px;
+        line-height: 1.4;
+        border-radius: 2px;
+        color: #fff;
+        font-size: clamp(12px, 1.2vw, 15px);
+        margin: 15px;
+
+        &.horizontal {
+            &.icgbv__center {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &.icgbv__top {
+                top: 0;
+            }
+
+            &.icgbv__bottom {
+                bottom: 0;
+            }
+
+            &.icgbh__left {
+                left: 0;
+            }
+
+            &.icgbh__right {
+                right: 0;
+            }
+
+            &.icgbh__center {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &.before-label {
+                left: 0;
+            }
+            &.after-label {
+                right: 0;
+            }
+        }
+
+        &.vertical {
+            &.icgbv__center {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &.icgbv__top {
+                top: 0;
+            }
+
+            &.icgbv__bottom {
+                bottom: 0;
+            }
+
+            &.icgbh__left {
+                left: 0;
+            }
+
+            &.icgbh__right {
+                right: 0;
+            }
+
+            &.icgbh__center {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &.before-label {
+                top: 0;
+            }
+            &.after-label {
+                bottom: 0;
+            }
+        }
+    }
+}
+
+.gutslider-caption {
+    margin: 8px 0 0;
+    text-align: center;
+    .gutslider-caption-text {
+        display: block;
+        margin: 0;
+        font-size: clamp(12px, 1.2vw, 13px);
+        font-style: italic;
+        color: #7a7474;
+    }
+}
+
+// main block
+.wp-block-gutsliders-before-after {
+    .gutslider-ba-item {
+        width: 100%;
+        &.hover {
+            .gutslider-label {
+                visibility: hidden;
+                transition: all 0.3s ease-in-out;
+                opacity: 0;
+                &.icgb__zoom_in {
+                    transform: scale(0.8);
+                }
+                &.icgb__zoom_out {
+                    transform: scale(1.1);
+                }
+                &.icgb__slide_left {
+                    transform: translateX(-20px);
+                }
+                &.icgb__slide_right {
+                    transform: translateX(20px);
+                }
+                &.icgb__slide_up {
+                    transform: translateY(-20px);
+                }
+                &.icgb__slide_down {
+                    transform: translateY(20px);
+                }
+            }
+        }
+    }
+
+    &:hover {
+        .gutslider-ba-item {
+            .gutslider-label {
+                visibility: visible;
+                opacity: 1;
+                &.icgb__zoom_in {
+                    transform: scale(1);
+                }
+                &.icgb__zoom_out {
+                    transform: scale(1);
+                }
+                &.icgb__slide_left {
+                    transform: translateX(0);
+                }
+                &.icgb__slide_right {
+                    transform: translateX(0);
+                }
+                &.icgb__slide_up {
+                    transform: translateY(0);
+                }
+                &.icgb__slide_down {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}

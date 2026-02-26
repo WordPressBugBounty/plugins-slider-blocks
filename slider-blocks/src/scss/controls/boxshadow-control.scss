@@ -1,0 +1,62 @@
+.gkits-control-container {
+	&.box-shadow-control {
+		.shadow-indicator {
+			background: none;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			width: 25px;
+			height: 25px;
+		}
+		.shadow-indicator {
+			transform: translateY(5px);
+			&:focus {
+				outline: none !important;
+				box-shadow: none !important;
+			}
+			.dashicon {
+				font-size: 18px;
+			}
+		}
+	}
+}
+.gkits-shadow-panel {
+	min-width: 250px;
+	padding: 20px;
+	box-sizing: border-box;
+
+	.box-shadow-color-picker {
+		margin: 15px 0;
+		.components-base-control__field,
+		.components-base-control__label,
+		.components-base-control {
+			margin: 0 !important;
+		}
+
+		.color-indicator {
+			background: none;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			width: 25px;
+			height: 25px;
+		}
+		.component-color-indicator {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-image: linear-gradient(45deg, #ddd 25%, transparent 0),
+				linear-gradient(-45deg, #ddd 25%, transparent 0),
+				linear-gradient(45deg, transparent 75%, #ddd 0),
+				linear-gradient(-45deg, transparent 75%, #ddd 0);
+			background-size: 10px 10px;
+			background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+		}
+	}
+
+	.components-input-control__backdrop {
+		border-color: #e0e0e0 !important;
+	}
+}

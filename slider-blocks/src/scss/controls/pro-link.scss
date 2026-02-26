@@ -1,0 +1,38 @@
+.gkits-pro-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 0;
+    padding: 10px 15px;
+    background: #7249c7;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+    transition: 0.3s;
+    justify-content: center;
+    text-decoration: none !important;
+    &:hover {
+        background: #4a0dc9;
+        color: #fff !important;
+    }
+    svg {
+        width: 18px;
+        height: 18px;
+        fill: #fff;
+    }
+}
+
+.gkits-pro-link-container {
+    padding: 30px;
+    background: #5a17e617;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    p.unlock-feature {
+        font-size: 16px;
+        margin: 0 0 15px;
+    }
+}

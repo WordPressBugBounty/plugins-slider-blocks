@@ -1,0 +1,16 @@
+/*
+* Style Works for Editor Only
+*/
+.gutslider-note {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+.wp-block-gutsliders-content-slider {
+    .gutslider-prev,
+    .gutslider-next {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}

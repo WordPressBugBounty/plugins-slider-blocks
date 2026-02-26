@@ -1,0 +1,46 @@
+.gkits-linked-control {
+	.components-base-control {
+		margin-bottom: 0 !important;
+	}
+
+	.gkits-link-extra-btn {
+		padding: 4px !important;
+		border: 1px solid #e0e0e0;
+		height: auto;
+		border-radius: 2px;
+		height: 36px;
+	}
+
+	.gkits-link-extra-btn span {
+		font-size: 16px;
+		display: block;
+		line-height: 20px;
+	}
+
+	.gkits-link-extra-btn.gkits-le-active {
+		color: #007cba;
+	}
+}
+
+// Popover
+.gkits-link-extra-popover {
+	width: 240px;
+	padding: 10px;
+	box-sizing: border-box;
+
+	.components-flex {
+		flex-direction: row-reverse;
+	}
+
+	.components-toggle-control {
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+	.components-form-toggle
+		.components-form-toggle__input:focus
+		+ .components-form-toggle__track {
+		box-shadow: none !important;
+		outline: none !important;
+	}
+}

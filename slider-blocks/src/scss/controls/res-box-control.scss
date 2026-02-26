@@ -1,0 +1,56 @@
+.gkits-control-container {
+	.single-inputs-group {
+		display: flex;
+		align-items: flex-start;
+		.components-input-control__input {
+			height: 36px !important;
+		}
+	}
+
+	.gkits-single-inputs-group {
+		display: flex;
+		align-items: stretch;
+		gap: 2px;
+		.single-input {
+			&:first-child .components-input-control {
+				border-right: 0 !important;
+			}
+
+			.components-flex {
+				align-items: center !important;
+			}
+			.components-input-control__label {
+				font-size: 10px !important;
+				text-transform: capitalize !important;
+				color: #b3b3b3;
+			}
+
+			.components-input-control__input,
+			.components-button {
+				height: 36px;
+			}
+
+			.components-button {
+				border: 1px solid #e0e0e0;
+				background: #ffffff;
+				padding: 6px;
+				align-items: center;
+				justify-content: center;
+				&:focus {
+					outline: none;
+					box-shadow: none !important;
+				}
+				.dashicon {
+					font-size: 16px;
+					line-height: 20px;
+				}
+				&.active {
+					background: #eeeeee;
+					.dashicon {
+						color: #007cba;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,24 +1,22 @@
-=== GutSlider - All in One Block Slider for Gutenberg ===
-Contributors: gkits, binsaifullah, milon0,jafor2, jobyaer23
+=== Slider Blocks ===
+Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
-Tested up to: 6.8
-Stable tag: 2.9.17
+Tested up to: 6.9
+Stable tag: 2.11.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-GutSlider is a custom Gutenberg Slider Block that allows you to create a slider or carousel easily. You don't need to have any coding knowledge.
+Slider Blocks is a WordPress Slider Block Plugin that allows you to create a slider or carousel with both static and dyanmic content.
 
 == Description ==
 
-GutSlider: The Ultimate Gutenberg Slider and Carousel Block Plugin
+Slider Blocks: The Ultimate Gutenberg Slider and Carousel Block Plugin
 
-GutSlider is a powerful custom **Gutenberg Slider Block** plugin designed to help you easily create stunning **sliders** and **carousels** without any coding experience. Whether you need a dynamic slider or a captivating carousel, GutSlider offers multiple types of slider blocks and carousel blocks to meet your design needs.
+It is a powerful custom **Gutenberg Slider Block** plugin designed to help you easily create stunning **sliders** and **carousels** without any coding experience. Whether you need a dynamic slider or a captivating carousel, it offers multiple types of slider blocks and carousel blocks to meet your design needs.
 
-Built with Gutenberg Native Components, GutSlider is both fast and lightweight, ensuring optimal performance by only loading scripts on pages where the block is used. Its highly customizable and intuitive interface provides a seamless drag-and-drop experience, allowing you to add any type of content with ease.
-
-**[Get GutSlider Pro](https://gutslider.com/pricing)** | **[View Demos](https://gutslider.com)**
+Built with Gutenberg Native Components, fast and lightweight, ensuring optimal performance by only loading scripts on pages where the block is used. Its highly customizable and intuitive interface provides a seamless drag-and-drop experience, allowing you to add any type of content with ease.
 
 ### Video Tutorial
 [youtube http://www.youtube.com/watch?v=P9Zj4bSVq4I]
@@ -46,21 +44,29 @@ Built with Gutenberg Native Components, GutSlider is both fast and lightweight, 
 * **[Before After Slider](https://gutslider.com/before-after)**
 * **[Videos Carousel](https://gutslider.com/videos)**
 * **[Blog Post](https://gutslider.com/post-slider)**
+
 ### Pro Blocks 
-* **[Shaders Slider](https://gutslider.com/fashion-slider/)**
-* **[Shutters Slider](https://gutslider.com/shutters-slider/)**
-* **[Slicer Slider](https://gutslider.com/slicer-slider/)**
-* **[Fashion Slider](https://gutslider.com/fashion-slider/)**
-* **[Spring Carousel](https://gutslider.com/spring-carousel/)**
+* **[Shaders Slider](https://demos.gutslider.com/fashion-slider/)**
+* **[Shutters Slider](https://demos.gutslider.com/shutters-slider/)**
+* **[Slicer Slider](https://demos.gutslider.com/slicer-slider/)**
+* **[Fashion Slider](https://demos.gutslider.com/fashion-slider/)**
+* **[Spring Carousel](https://demos.gutslider.com/spring-carousel/)**
 * **[Frame Slider](https://gutslider.com/pricing/)**
-* **[Hover Slider](https://gutslider.com/pricing/)**
-* **[Material Carousel](https://gutslider.com/pricing/)**
-* **[Panorama Carousel](https://gutslider.com/panorama-carousel/)**
-* **[3D Carousel](https://gutslider.com/3d-carousel/)**
-* **[Triple Slider](https://gutslider.com/triple-slider/)**
-* **[Card Slider](https://gutslider.com/card-slider/)**
-* **[Marquee Carousel](https://gutslider.com/marquee-carousel/)**
-* **[Woo Products Carousel](https://gutslider.com/pricing/)**
+* **[Hover Slider](https://demos.gutslider.com/hover-slider/)**
+* **[Material Carousel](https://demos.gutslider.com/material-slider/)**
+* **[Panorama Carousel](https://demos.gutslider.com/panorama-carousel/)**
+* **[3D Carousel](https://demos.gutslider.com/3d-carousel/)**
+* **[Triple Slider](https://demos.gutslider.com/triple-slider/)**
+* **[Card Slider](https://demos.gutslider.com/card-slider/)**
+* **[Marquee Carousel](https://demos.gutslider.com/marquee-carousel/)**
+* **[Woo Products Carousel](https://demos.gutslider.com/product-carousel/)**
+* **[Woo Products Categories Carousel](https://demos.gutslider.com/product-categories-carousel/)**
+
+
+### Third Party Resource
+- [fslightbox](https://fslightbox.com/) is used for creating image lightbox.
+- [swiperjs](https://swiperjs.com/) is used to build the whole plugin.
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
@@ -68,34 +74,48 @@ e.g.
 
 1. Upload the plugin files to the `/wp-content/plugins/slider-blocks` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the Settings->slider-blocks screen to configure the plugin
+1. Use the GutSlider main menu screen to configure the plugin
 1. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 == Frequently Asked Questions ==
 = Is it responsive? =
-Yes, GutSlider is fully responsive and adapts to all screen sizes, ensuring that your sliders and carousels look great on any device.
+Yes, it is fully responsive and adapts to all screen sizes, ensuring that your sliders and carousels look great on any device.
 
 = Will it slow down my site? =
-Never. GutSlider is lightweight and optimized for performance. It only loads scripts on the pages where the block is used, ensuring minimal impact on your site’s speed.
+Never. it is lightweight and optimized for performance. It only loads scripts on the pages where the block is used, ensuring minimal impact on your site’s speed.
 
 = Is it built with Gutenberg Native Components? =
-Yes, GutSlider is built entirely with Gutenberg Native Components, ensuring seamless integration with the WordPress editor.
+Yes, it is built entirely with Gutenberg Native Components, ensuring seamless integration with the WordPress editor.
 
 = Can I use it with any theme? =
-Yes, you can use GutSlider with any theme. It is compatible with most themes and has been tested with many popular WordPress themes.
+Yes, you can use it with any theme. It is compatible with most themes and has been tested with many popular WordPress themes.
 
 = I have updated the plugin but it is not working now? =
 If you encounter any issues after updating, you may face a block recovery prompt. Simply click the "Attempt Block Recovery" button or update the post/page to resolve the issue.
 
 = Does it support multiple types of sliders and carousels? =
-Yes, GutSlider supports multiple types of sliders and carousels, allowing you to showcase any type of content in various formats.
+Yes, it supports multiple types of sliders and carousels, allowing you to showcase any type of content in various formats.
 
 = Does it require jQuery? =
-No, GutSlider does not require jQuery. It uses Swiper JS for smooth slider performance without jQuery dependencies.
+No, it does not require jQuery. It uses Swiper JS for smooth slider performance without jQuery dependencies.
 
 == Screenshots ==
 
 == Changelog == 
+= 2.11.1 =
+* Fixed: apiVersion is updated 
+
+= 2.11.0 =
+* Info: Prepared for new review process 
+
+= 2.10.1 =
+* Fixed photo carousel style overriding issue 
+* Fixed classic theme assets loading issue 
+
+= 2.10.0 =
+* Redesign: The admin dashboard is redesigned with a clean and elegant design.
+* Made it compatible with latest pro version
+
 = 2.9.17 =
 * Added: Detach Content support is added for blog post block
 * Fixed: Video Custom Poster style issues are fixed

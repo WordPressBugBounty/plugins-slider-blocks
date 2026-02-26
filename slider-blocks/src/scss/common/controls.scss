@@ -1,0 +1,290 @@
+/*
+* Base CSS for all controls
+*/
+
+.components-popover {
+    z-index: 99999 !important;
+}
+
+// Controls Container
+.gkits-control-container {
+    margin-bottom: 24px;
+    .components-flex {
+        margin-bottom: 8px;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+.afterg-btn {
+    &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.gkits-block {
+    display: block;
+}
+
+// Margin Bottom
+.gkits-mb-0 {
+    margin-bottom: 0;
+}
+
+.gkits-mb-8 {
+    margin-bottom: 8px;
+}
+
+.gkits-mb-12 {
+    margin-bottom: 12px;
+}
+
+.gkits-mb-16 {
+    margin-bottom: 16px;
+}
+
+.gkits-mb-24 {
+    margin-bottom: 24px;
+}
+
+// Padding Bottom
+.gkits-pb-0 {
+    padding-bottom: 0;
+}
+
+// Display
+.gkits-inline-block {
+    display: inline-block;
+}
+
+.gkits-block {
+    display: block;
+}
+
+// Buttons Group
+.gkits-btn-group {
+    &.gkits-full-group {
+        width: 100%;
+        display: flex;
+        .components-button {
+            width: 100%;
+            padding: 0;
+            justify-content: center;
+        }
+    }
+    .components-button {
+        box-shadow: inset 0 0 0 1px #e0e0e0;
+        font-size: 11px;
+        text-transform: capitalize;
+        font-weight: 500;
+        box-sizing: border-box;
+        height: 30px;
+        &:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 1px #e0e0e0;
+        }
+        &.active {
+            background: #eee;
+            color: #014568;
+        }
+    }
+}
+
+// label
+.gkits-label,
+.gkits-header-tabs .components-base-control__label,
+.gkits-popover-panel .components-base-control__label {
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: none !important;
+    display: inline-block;
+}
+
+// reset button
+.gkits-reset-button {
+    width: 12px;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-width: unset !important;
+    color: #007cba;
+    &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    &.disabled {
+        cursor: not-allowed;
+        .dashicon {
+            color: #e0e0e0;
+        }
+    }
+    &.active {
+        .dashicon {
+            color: #007cba;
+        }
+    }
+    .dashicon {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+.gkits-reset-control {
+    .components-base-control__field {
+        margin-bottom: 0 !important;
+    }
+    .components-range-control__wrapper span[aria-hidden='true'] {
+        height: 2px !important;
+    }
+    .components-range-control__thumb-wrapper {
+        height: 8px !important;
+        width: 8px !important;
+        margin-top: 10px !important;
+
+        span:before {
+            height: 12px !important;
+            width: 12px !important;
+            left: -2px !important;
+            top: -5px !important;
+        }
+    }
+    .components-simple-tooltip {
+        display: none !important;
+    }
+}
+
+// editor icon
+.gkits-editor-icon {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    &:focus {
+        outline: none;
+        box-shadow: none !important;
+    }
+    svg,
+    .dashicon {
+        width: 16px;
+        font-size: 12px;
+        line-height: 20px;
+    }
+    &.active-btn {
+        background-color: #f3f4f5;
+        svg {
+            fill: #007cba;
+        }
+    }
+}
+
+// Control unit
+.gkits-control-container {
+    // margin-bottom: 16px;
+    .components-flex {
+        // padding-bottom: 8px;
+        .gkits-units-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            .unit-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 10px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin: 0;
+                padding: 0;
+                &.active {
+                    color: #007cba;
+                }
+            }
+        }
+    }
+
+    // control label
+    .components-base-control__label,
+    .components-base-control__field {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+// Popover
+.gkits-popover {
+    .components-input-control__backdrop {
+        border: 1px solid #e5e5e5 !important;
+    }
+}
+
+// inner popover
+.gutslider-inner-popover {
+    width: 250px;
+    padding: 10px;
+    .gkits-control-container {
+        margin: 0;
+    }
+}
+
+.gkits-res-btn {
+    .components-button-group {
+        margin-bottom: 0 !important;
+    }
+}
+
+// custom help
+
+.gkits_custom__help {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #999;
+    font-style: italic;
+    display: block;
+}
+
+.gkits-label-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+// pro block
+.gkits-pro-lock-container {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #ededed;
+    padding: 12px;
+    cursor: not-allowed;
+    z-index: 1;
+    margin-bottom: 16px;
+}
+
+.gkits-pro-lock-container:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    content: '';
+    z-index: 9;
+    opacity: 0.25;
+}
+
+.gkits-pro-lock-container .pro-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #8b1919;
+    padding: 6px 8px;
+    border-radius: 0 5px 0 0;
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.gkits-pro-lock-container .components-base-control {
+    margin-bottom: 0 !important;
+}

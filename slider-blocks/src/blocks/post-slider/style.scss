@@ -1,0 +1,334 @@
+/*
+* Style Works for both Editor and Frontend
+*/
+.wp-block-gutsliders-post-slider {
+    box-sizing: border-box;
+    position: relative;
+    .gutslider-content-wrapper {
+        height: clamp(300px, 60vh, 500px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .post-category,
+        .post-title,
+        .post-excerpt {
+            margin: 0 0 15px;
+        }
+
+        // detached content
+        &.detach-content {
+            height: auto !important;
+        }
+    }
+
+    .detached-featured-image {
+        width: 100%;
+        height: clamp(200px, 50vh, 350px);
+        display: block;
+        text-decoration: none;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // slider inner
+    .gutslider-content-inner {
+        padding: clamp(15px, 6vw, 30px);
+        max-width: 80%;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .post-categories {
+        display: inline-block;
+    }
+
+    .post-category {
+        font-size: clamp(12px, 2vw, 15px);
+    }
+
+    .post-category + .post-category {
+        margin-left: clamp(5px, 1vw, 10px);
+    }
+
+    .post-title {
+        // font-size: clamp(24px, 4vw, 40px);
+        font-weight: 700;
+        text-decoration: none;
+    }
+    .post-excerpt {
+        font-size: clamp(14px, 2vw, 16px);
+    }
+    .post-cta {
+        display: inline-block;
+        padding: clamp(5px, 1vw, 10px) clamp(15px, 2vw, 30px);
+        border: 1px solid #000;
+        color: #000;
+        background-color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color: #fff;
+            background-color: #000;
+        }
+    }
+
+    // overlay
+    .swiper-container-outer {
+        position: relative;
+        z-index: 1;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .gutslider-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .swiper-slide {
+        &.detach-content {
+            height: auto !important;
+
+            .swiper-container-outer {
+                height: 100%;
+            }
+        }
+    }
+
+    // custom css animations
+    .swiper-slide.slide-mode {
+        // animation transition
+        .gutanimation {
+            transition: all 1s ease-in-out;
+        }
+
+        // animation classes
+        .gutslider-fadeInUp {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .gutslider-fadeInDown {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        .gutslider-fadeInLeft {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        .gutslider-fadeInRight {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+        .gutslider-slideInUp {
+            transform: translateY(50px);
+        }
+        .gutslider-slideInDown {
+            transform: translateY(-50px);
+        }
+        .gutslider-slideInLeft {
+            transform: translateX(-100px);
+        }
+        .gutslider-slideInRight {
+            transform: translateX(100px);
+        }
+
+        // active slide
+        &.swiper-slide-active {
+            .gutslider-fadeInUp,
+            .gutslider-fadeInDown {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .gutslider-fadeInLeft,
+            .gutslider-fadeInRight {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .gutslider-slideInUp,
+            .gutslider-slideInDown {
+                transform: translateY(0);
+            }
+            .gutslider-slideInLeft,
+            .gutslider-slideInRight {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    // navigation
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: clamp(24px, 6vw, 40px);
+        height: clamp(24px, 6vw, 40px);
+        color: #e0e0e0;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    }
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+        font-size: clamp(12px, 3vw, 18px);
+    }
+
+    // navigation position
+    &.nav_outside.nav_cc {
+        padding: 0 clamp(40px, 6vw, 60px);
+    }
+    &.nav_outside.nav_tl,
+    &.nav_outside.nav_tc,
+    &.nav_outside.nav_tr {
+        padding: clamp(40px, 6vw, 60px) 0 0 0;
+    }
+
+    &.nav_outside.nav_bl,
+    &.nav_outside.nav_bc,
+    &.nav_outside.nav_br {
+        padding: 0 0 clamp(40px, 6vw, 60px) 0;
+    }
+
+    .gutslider-nav {
+        z-index: 11;
+        &:not(.nav_outside, .nav_cc),
+        &:not(.nav_inside, .nav_cc) {
+            position: absolute;
+            display: flex;
+            gap: 5px;
+            .swiper-button-prev,
+            .swiper-button-next,
+            .gutslider-prev,
+            .gutslider-next {
+                position: relative;
+                left: auto;
+                top: auto;
+                right: auto;
+                bottom: auto;
+                margin: 0 !important;
+            }
+        }
+        // &.nav_inside {
+        //     margin: 15px;
+        // }
+
+        // navigation positions outside
+        &.nav_outside.nav_tl {
+            top: 0;
+            left: 0;
+        }
+        &.nav_outside.nav_tc {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.nav_outside.nav_tr {
+            top: 0;
+            right: 0;
+        }
+        &.nav_outside.nav_bl {
+            bottom: 0;
+            left: 0;
+        }
+        &.nav_outside.nav_bc {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.nav_outside.nav_br {
+            bottom: 0;
+            right: 0;
+        }
+
+        // navigation positions inside
+        &.nav_inside.nav_tl {
+            top: 0;
+            left: 0;
+        }
+        &.nav_inside.nav_tc {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.nav_inside.nav_tr {
+            top: 0;
+            right: 0;
+        }
+        &.nav_inside.nav_bl {
+            bottom: 0;
+            left: 0;
+        }
+        &.nav_inside.nav_bc {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.nav_inside.nav_br {
+            bottom: 0;
+            right: 0;
+        }
+    }
+
+    // custom navigation
+    .gutslider-prev {
+        left: var(--swiper-navigation-sides-offset, 10px);
+        right: auto;
+    }
+
+    .gutslider-next {
+        right: var(--swiper-navigation-sides-offset, 10px);
+        left: auto;
+    }
+
+    .gutslider-next,
+    .gutslider-prev {
+        position: absolute;
+        top: var(--swiper-navigation-top-offset, 50%);
+        width: clamp(24px, 6vw, 40px);
+        height: clamp(24px, 6vw, 40px);
+        margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+        z-index: 11;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background-color: #333;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color: #fff;
+            background-color: #000;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+        }
+    }
+
+    .gutslider-prev-icon,
+    .gutslider-next-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // pagination
+    .swiper-pagination-bullet {
+        transition: all 0.3s ease-in-out;
+    }
+}
