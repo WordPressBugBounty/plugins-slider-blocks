@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.9
-Stable tag: 2.11.1
+Stable tag: 2.11.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -63,9 +63,8 @@ Built with Gutenberg Native Components, fast and lightweight, ensuring optimal p
 * **[Woo Products Categories Carousel](https://demos.gutslider.com/product-categories-carousel/)**
 
 
-### Third Party Resource
-- [fslightbox](https://fslightbox.com/) is used for creating image lightbox.
-- [swiperjs](https://swiperjs.com/) is used to build the whole plugin.
+== Third Party Resource == 
+[fslightbox](https://fslightbox.com/) is used for creating image lightbox.
 
 == Installation ==
 
@@ -102,6 +101,9 @@ No, it does not require jQuery. It uses Swiper JS for smooth slider performance 
 == Screenshots ==
 
 == Changelog == 
+= 2.11.2 =
+* Fixed: the fatal error 
+
 = 2.11.1 =
 * Fixed: apiVersion is updated 
 
