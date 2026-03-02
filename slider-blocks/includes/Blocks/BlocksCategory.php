@@ -41,12 +41,22 @@ final class BlocksCategory {
 	 * @param \WP_Block_Editor_Context         $context    The block editor context.
 	 * @return array<int, array<string, mixed>> Modified block categories.
 	 */
-	public function register_block_category( array $categories, \WP_Block_Editor_Context $context ): array {
-		$new_category = array(
-			'slug'  => 'slider-blocks',
-			'title' => __( 'GutSlider Blocks', 'slider-blocks' ),
-		);
+	// public function register_block_category( array $categories, \WP_Block_Editor_Context $context ): array {
+	// 	$new_category = array(
+	// 		'slug'  => 'slider-blocks',
+	// 		'title' => __( 'GutSlider Blocks', 'slider-blocks' ),
+	// 	);
 
-		return array_merge( array( $new_category ), $categories );
+	// 	return array_merge( array( $new_category ), $categories );
+	// }
+
+	public function register_block_category( $categories, $post ) {
+	
+		array_unshift( $categories, array(
+			'slug'	=> 'slider-blocks',
+			'title' => __( 'GutSlider Blocks', 'slider-blocks' ),
+		) );
+
+		return $categories;
 	}
 }
