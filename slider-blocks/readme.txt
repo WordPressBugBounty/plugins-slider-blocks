@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.9
-Stable tag: 2.11.2
+Stable tag: 2.11.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -101,6 +101,9 @@ No, it does not require jQuery. It uses Swiper JS for smooth slider performance 
 == Screenshots ==
 
 == Changelog == 
+= 2.11.3 =
+* Fixed: Dynamic block fatal error fixed 
+
 = 2.11.2 =
 * Fixed: the fatal error 
 
