@@ -43,7 +43,7 @@ final class EnqueueAssets {
 	 */
 	public function __construct() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ), 2 );
-		add_action( 'enqueue_block_assets', array( $this, 'enqueue_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_both_assets' ) );
 	}
 
 	/**
@@ -72,7 +72,7 @@ final class EnqueueAssets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_assets(): void {
+	public function enqueue_both_assets(): void {
 		wp_register_style(
 			'gutslider-swiper-style',
 			GUTSLIDER_URL . 'assets/css/swiper-bundle.min.css',
@@ -170,6 +170,14 @@ final class EnqueueAssets {
 		}
 
 		$preview_urls['is_pro'] = defined( 'GUTSLIDER_PRO_VERSION' );
+
+		wp_localize_script(
+			'gutslider-blocks-modules-script',
+			'gutsliderData',
+			array(
+				'hasPro' => defined( 'GUTSLIDER_PRO_VERSION' ),
+			)
+		);
 
 		wp_localize_script(
 			'gutslider-blocks-modules-script',

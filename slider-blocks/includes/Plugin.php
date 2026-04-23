@@ -69,6 +69,7 @@ final class Plugin {
 		// Initialize components.
 		new Blocks\BlocksCategory();
 		new Blocks\RegisterBlocks();
+		new Blocks\Pattern();
 		new Assets\EnqueueAssets();
 		new Assets\LoadFonts();
 		new Style\DynamicStyle();

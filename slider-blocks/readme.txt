@@ -1,18 +1,18 @@
-=== Slider Blocks ===
+=== GutSlider - All in One Slider and Carousel Blocks for Gutenberg ===
 Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.9
-Stable tag: 2.11.4
+Stable tag: 2.12.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Slider Blocks is a WordPress Slider Block Plugin that allows you to create a slider or carousel with both static and dyanmic content.
+GutSlider is a WordPress Slider Block Plugin that allows you to create a slider or carousel with both static and dyanmic content.
 
 == Description ==
 
-Slider Blocks: The Ultimate Gutenberg Slider and Carousel Block Plugin
+GutSlider: The Ultimate Gutenberg Slider and Carousel Blocks Plugin
 
 It is a powerful custom **Gutenberg Slider Block** plugin designed to help you easily create stunning **sliders** and **carousels** without any coding experience. Whether you need a dynamic slider or a captivating carousel, it offers multiple types of slider blocks and carousel blocks to meet your design needs.
 
@@ -101,6 +101,12 @@ No, it does not require jQuery. It uses Swiper JS for smooth slider performance 
 == Screenshots ==
 
 == Changelog == 
+
+= 2.12.0 = 
+* Added: Added Patterns library 
+* Added: Testimonial block visibility option for all elements
+* Updated: Sorting component is Improved
+* Updated: Blocks Icons colors are changed to native
 
 = 2.11.4 = 
 * Fixed: Bricksbuilder conflict issue 
