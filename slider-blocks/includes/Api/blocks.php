@@ -28,6 +28,14 @@ return apply_filters(
 			'active'      => true,
 		),
 		array(
+			'name'        => 'marquee',
+			'title'       => __( 'Marquee', 'slider-blocks' ),
+			'description' => __( 'Create amazing marquee with any type of content.', 'slider-blocks' ),
+			'is_pro'      => false,
+			'demo_slug'   => 'marquee',
+			'active'      => true,
+		),
+		array(
 			'name'        => 'any-content',
 			'title'       => __( 'Flexible', 'slider-blocks' ),
 			'description' => __( 'Create slider with any type of content.', 'slider-blocks' ),

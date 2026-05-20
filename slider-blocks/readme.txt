@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, block slider, gutenberg slider
 Requires at least: 6.5 
 Tested up to: 6.9
-Stable tag: 2.12.0
+Stable tag: 2.13.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -101,6 +101,8 @@ No, it does not require jQuery. It uses Swiper JS for smooth slider performance 
 == Screenshots ==
 
 == Changelog == 
+= 2.13.0 = 
+* Added: New Marquee block is added
 
 = 2.12.0 = 
 * Added: Added Patterns library 
