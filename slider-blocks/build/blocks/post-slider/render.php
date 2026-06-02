@@ -79,7 +79,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
         }
 
         ?>
-        <div <?php echo wp_kses_post( $block_props ); ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>"
+        <div <?php echo wp_kses_data( $block_props ); ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>"
             <?php
                 if ( $atts['enableRemoteNav'] ) {
                     echo 'data-rprev="' . esc_attr( $atts['remotePrevSelector'] ) . '" ';

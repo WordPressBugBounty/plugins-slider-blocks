@@ -133,7 +133,7 @@ if ( $gutslider_is_vertical ) {
 	$gutslider_animation_name = 'marquee-scroll-' . $gutslider_direction;
 }
 ?>
-<div <?php echo wp_kses_post( get_block_wrapper_attributes( $gutslider_wrapper_attrs ) ); ?>>
+<div <?php echo wp_kses_data( get_block_wrapper_attributes( $gutslider_wrapper_attrs ) ); ?>>
 	<div
 		class="<?php echo esc_attr( implode( ' ', $gutslider_container_classes ) ); ?>"
 		style="--animation-duration:<?php echo intval( $gutslider_speed ); ?>s;--animation-name:<?php echo esc_attr( $gutslider_animation_name ); ?>"
