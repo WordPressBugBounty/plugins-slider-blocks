@@ -11,6 +11,42 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if ( ! function_exists( 'gutslider_post_slider_terms' ) ) {
+    /**
+     * Terms to print above a slide title.
+     *
+     * The taxonomies the slider is filtered by double as the ones it labels slides with;
+     * with no filter it falls back to core categories, which is what the block has always
+     * shown. Term ids sit on the stored REST record under each taxonomy's rest_base.
+     *
+     * @param array $post       A record from the `queryPosts` attribute.
+     * @param array $taxonomies Taxonomy slugs to read.
+     * @return WP_Term[] Terms, in taxonomy order.
+     */
+    function gutslider_post_slider_terms( $post, $taxonomies ) {
+        $terms = [];
+
+        foreach ( $taxonomies as $taxonomy ) {
+            $taxonomy_object = get_taxonomy( $taxonomy );
+            if ( ! $taxonomy_object ) {
+                continue;
+            }
+
+            $rest_base = ! empty( $taxonomy_object->rest_base ) ? $taxonomy_object->rest_base : $taxonomy;
+            $term_ids  = isset( $post[ $rest_base ] ) && is_array( $post[ $rest_base ] ) ? $post[ $rest_base ] : [];
+
+            foreach ( $term_ids as $term_id ) {
+                $term = get_term( absint( $term_id ), $taxonomy );
+                if ( $term && ! is_wp_error( $term ) ) {
+                    $terms[] = $term;
+                }
+            }
+        }
+
+        return $terms;
+    }
+}
+
 if ( ! function_exists( 'gutslider_post_slider' ) ) {
     function gutslider_post_slider( $attributes ) {
         // Extract attributes with default values
@@ -46,6 +82,10 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
             'remotePrevSelector'   => '',
             'remoteNextSelector'   => '',
             'detachContent'       => false, // New attribute for detaching content
+            'showThumbs'           => false,
+            'thumbContent'         => 'image',
+            'thumbTitlePosition'   => 'below',
+            'thumbsOptions'        => [],
         ];
 
         $atts = wp_parse_args( $attributes, $defaults );
@@ -54,7 +94,20 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
         $atts                  = array_map( 'sanitize_text_field', $atts );
         $atts['queryPosts']    = isset( $attributes['queryPosts'] ) ? $attributes['queryPosts'] : [];
         $atts['sliderOptions'] = isset( $attributes['sliderOptions'] ) ? $attributes['sliderOptions'] : [];
+        $atts['thumbsOptions'] = isset( $attributes['thumbsOptions'] ) ? $attributes['thumbsOptions'] : [];
         $atts['focusPoints']   = isset( $attributes['focusPoints'] ) ? $attributes['focusPoints'] : [];
+
+        // Taxonomies the slider is filtered by. `taxQuery` covers every taxonomy;
+        // `specificCategories` is the legacy, core-category-only attribute kept for blocks
+        // saved before that. The editor empties it as soon as a filter is changed, so only
+        // one of the two is ever in play.
+        $tax_query  = isset( $attributes['taxQuery'] ) && is_array( $attributes['taxQuery'] ) ? $attributes['taxQuery'] : [];
+        $query_type = isset( $attributes['queryType'] ) ? sanitize_key( $attributes['queryType'] ) : 'latest_posts';
+
+        $term_taxonomies = [ 'category' ];
+        if ( 'specific_categories' === $query_type && ! empty( $tax_query ) ) {
+            $term_taxonomies = array_map( 'sanitize_key', array_keys( $tax_query ) );
+        }
 
         // Block classes
         $block_classes = [
@@ -81,6 +134,11 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
         ?>
         <div <?php echo wp_kses_data( $block_props ); ?> data-swiper-options="<?php echo esc_attr( wp_json_encode( $atts['sliderOptions'] ) ); ?>"
             <?php
+                if ( '1' === $atts['showThumbs'] ) {
+                    echo 'data-thumbs-options="' . esc_attr( wp_json_encode( $atts['thumbsOptions'] ) ) . '" ';
+                }
+            ?>
+            <?php
                 if ( $atts['enableRemoteNav'] ) {
                     echo 'data-rprev="' . esc_attr( $atts['remotePrevSelector'] ) . '" ';
                     echo 'data-rnext="' . esc_attr( $atts['remoteNextSelector'] ) . '" ';
@@ -105,7 +163,7 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                                 ? sprintf( 'background-position: %d%% %d%%;', round( $focusPoints[$index - 1]['x'] * 100 ), round( $focusPoints[$index - 1]['y'] * 100 ) )
                                 : 'background-position: center center;';
                                 $bg_style = $post_image ? sprintf( 'background-image: url(%s); %s', esc_url( $post_image ), $bg_position ) : $bg_position;
-                                $post_categories = isset( $post['categories'] ) ? $post['categories'] : [];
+                                $post_terms      = gutslider_post_slider_terms( $post, $term_taxonomies );
 
                                 // create object-position style
                                 $object_position = isset( $focusPoints[$index - 1] ) && isset( $focusPoints[$index - 1]['x'] ) && isset( $focusPoints[$index - 1]['y'] )
@@ -135,14 +193,11 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                                         ?>
                                         <div class="gutslider-content-wrapper<?php echo $atts['detachContent'] ? ' detach-content' : ''; ?>">
                                             <div class="gutslider-content-inner">
-                                                <?php if ( $atts['showCat'] ) : ?>
+                                                <?php if ( $atts['showCat'] && ! empty( $post_terms ) ) : ?>
                                                     <div class="post-categories <?php echo esc_attr( $atts['catAnimation'] ); ?>">
                                                         <?php
-                                                            foreach ( $post_categories as $category_id ) {
-                                                                $category = get_category( $category_id );
-                                                                if ( $category ) {
-                                                                    printf( '<span class="post-category">%s</span>', esc_html( $category->name ) );
-                                                                }
+                                                            foreach ( $post_terms as $post_term ) {
+                                                                printf( '<span class="post-category">%s</span>', esc_html( $post_term->name ) );
                                                             }
                                                         ?>
                                                     </div>
@@ -272,6 +327,39 @@ if ( ! function_exists( 'gutslider_post_slider' ) ) {
                             <?php endif; ?>
                         </div>
                 <?php endif; ?>
+                <?php
+                    if ( '1' === $atts['showThumbs'] && is_array( $atts['queryPosts'] ) && ! empty( $atts['queryPosts'] ) ) {
+                        $thumb_classes = [ 'swiper', 'gutslider-thumbs', 'thumb-content-' . $atts['thumbContent'] ];
+                        if ( 'both' === $atts['thumbContent'] ) {
+                            $thumb_classes[] = 'thumb-title-' . $atts['thumbTitlePosition'];
+                        }
+                        $placeholder = GUTSLIDER_URL . 'assets/images/placeholder.svg';
+                        ?>
+                        <div class="<?php echo esc_attr( implode( ' ', $thumb_classes ) ); ?>">
+                            <div class="swiper-wrapper">
+                                <?php
+                                    foreach ( $atts['queryPosts'] as $thumb_post ) {
+                                        $thumb_media_id = isset( $thumb_post['featured_media'] ) ? $thumb_post['featured_media'] : '';
+                                        $thumb_url      = $thumb_media_id ? wp_get_attachment_image_url( $thumb_media_id, 'medium' ) : '';
+                                        $thumb_alt      = $thumb_media_id ? get_post_meta( $thumb_media_id, '_wp_attachment_image_alt', true ) : '';
+                                        $thumb_title    = isset( $thumb_post['title']['rendered'] ) ? $thumb_post['title']['rendered'] : '';
+                                        ?>
+                                        <div class="swiper-slide">
+                                            <?php if ( 'title' !== $atts['thumbContent'] ) : ?>
+                                                <img src="<?php echo esc_url( $thumb_url ? $thumb_url : $placeholder ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" />
+                                            <?php endif; ?>
+                                            <?php if ( 'image' !== $atts['thumbContent'] && $thumb_title ) : ?>
+                                                <span class="gutslider-thumb-title"><?php echo wp_kses_post( $thumb_title ); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                ?>
             </div>  
         <?php 
     }

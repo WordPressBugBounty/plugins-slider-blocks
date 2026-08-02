@@ -60,6 +60,36 @@ final class EnqueueAssets {
 		$this->enqueue_asset( 'global', true, true );
 		$this->enqueue_asset( 'modules', false );
 		$this->localize_preview_images();
+		$this->localize_editor_settings();
+	}
+
+	/**
+	 * Expose editor-facing settings to the global editor bundle.
+	 *
+	 * Printed as an inline script rather than via wp_localize_script so the
+	 * values keep their real types — wp_localize_script casts top level
+	 * scalars to strings, which would turn `false` into a truthy "".
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return void
+	 */
+	private function localize_editor_settings(): void {
+		$settings = get_option( 'gutslider_settings', array() );
+
+		$pattern_library = ! is_array( $settings ) || ! array_key_exists( 'pattern_library', $settings )
+			? true
+			: (bool) $settings['pattern_library'];
+
+		wp_add_inline_script(
+			'gutslider-blocks-global-script',
+			'window.gutsliderEditor = ' . wp_json_encode(
+				array(
+					'patternLibrary' => $pattern_library,
+				)
+			) . ';',
+			'before'
+		);
 	}
 
 	/**

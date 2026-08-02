@@ -1,350 +1,214 @@
 === GutSlider - All in One Slider and Carousel Blocks for Gutenberg ===
 Contributors: binsaifullah
-Tags: slider, carousel, slider block, block slider, gutenberg slider
-Requires at least: 6.5 
+Tags: slider, carousel, slider block, gutenberg slider, image slider
+Requires at least: 6.5
 Tested up to: 7.0
-Stable tag: 2.13.2
+Stable tag: 3.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-GutSlider is a WordPress Slider Block Plugin that allows you to create a slider or carousel with both static and dyanmic content.
+Build responsive sliders and carousels in the block editor - image, video, post, testimonial, logo and before-after slider blocks.
 
 == Description ==
 
-GutSlider: The Ultimate Gutenberg Slider and Carousel Blocks Plugin
+**GutSlider is an all-in-one slider and carousel plugin for the WordPress block editor (Gutenberg).** It adds a set of native slider blocks so you can build an image slider, content slider, post carousel, video carousel, testimonial slider, logo carousel or a before-after comparison slider directly on the page - no shortcodes, no page builder, no code.
 
-It is a powerful custom **Gutenberg Slider Block** plugin designed to help you easily create stunning **sliders** and **carousels** without any coding experience. Whether you need a dynamic slider or a captivating carousel, it offers multiple types of slider blocks and carousel blocks to meet your design needs.
+Every block is built with native Gutenberg components, so the editing experience feels like WordPress itself. Drag and drop your content, adjust the settings in the sidebar, and see the result live in the editor.
 
-Built with Gutenberg Native Components, fast and lightweight, ensuring optimal performance by only loading scripts on pages where the block is used. Its highly customizable and intuitive interface provides a seamless drag-and-drop experience, allowing you to add any type of content with ease.
+**Fast by design.** GutSlider only loads its scripts and styles on pages where a slider block is actually used, generates a single minified CSS file per page instead of inline `<style>` tags, and ships without jQuery. Sliding is powered by Swiper JS for smooth, hardware-accelerated transitions.
 
-### Video Tutorial
 [youtube http://www.youtube.com/watch?v=P9Zj4bSVq4I]
 
-### Key Features
-- **Create Stunning Sliders and Carousels**: Easily build dynamic sliders and captivating carousels without any coding knowledge.
-- **Simple, Lightweight, and Fast**: Optimized for performance with minimal load.
-- **Load Scripts Efficiently**: Only loads necessary scripts on pages where the block is used, ensuring faster load times.
-- **Built with Gutenberg Native Components**: Seamless integration into the Gutenberg editor.
-- **Multiple Slider and Carousel Types**: Choose from a variety of slider and carousel options to suit your content.
-- **Slide Any Content**: Flexibility to slide images, text, or any type of content you want.
-- **Drag-and-Drop Simplicity**: Easy-to-use interface for quick setup.
-- **Highly Customizable**: Clean and intuitive customization panels for advanced control.
-- **CSS Animations**: Add custom animations with adjustable delay settings for enhanced user engagement.
-- **Complete Slider & Carousel Settings**: All essential settings are available for complete control over design and functionality.
-- **Swiper JS Integration**: Uses Swiper JS for smooth, reliable slider performance without compromising speed.
-- **No jQuery Dependency**: Built without jQuery for modern, fast execution.
+### Why Choose GutSlider
 
-### Free Blocks
-* **[Static](https://gutslider.com/static)** 
-* [**Flexible**](https://gutslider.com/flexible)
-* **[Testimonial Slider](https://gutslider.com/testimonial)**
-* **[Photo Carousel](https://gutslider.com/photo)**
-* **[Logo Carousel](https://gutslider.com/brand-logos)**
-* **[Before After Slider](https://gutslider.com/before-after)**
-* **[Videos Carousel](https://gutslider.com/videos)**
-* **[Blog Post](https://gutslider.com/post-slider)**
+* **Slide any content** - images, video, text, buttons, headings, or any other block.
+* **Conditional asset loading** - scripts and styles load only on pages that use a slider block.
+* **No jQuery** - modern, dependency-free JavaScript built on Swiper JS.
+* **Native block editor UI** - built with Gutenberg components, not a bolted-on iframe or modal.
+* **Fully responsive** - separate Desktop, Tablet and Mobile values for spacing, columns, typography and more.
+* **Complete slider controls** - autoplay, loop, speed, effects, centered mode, free mode and column counts.
+* **Custom navigation and pagination** - styles, positions, sizes, colours, gaps and remote navigation.
+* **CSS entrance animations** - per-element animations with adjustable delay.
+* **Lightbox support** - open carousel photos in a full-screen lightbox.
+* **Google Fonts and typography controls** - full typography panel on every text element.
+* **Block patterns library** - ready-made slider layouts you can insert and edit.
+* **Enable or disable blocks** - turn off the blocks you do not use from the GutSlider dashboard.
+* **Translation ready** - fully internationalised and RTL friendly.
 
-### Pro Blocks 
-* **[Shaders Slider](https://demos.gutslider.com/fashion-slider/)**
+### Free Slider and Carousel Blocks
+
+* **[Static Slider](https://gutslider.com/static)** - a classic hero slider with image, heading, text and buttons.
+* **[Flexible Slider](https://gutslider.com/flexible)** - slide any block content you like.
+* **[Testimonial Slider](https://gutslider.com/testimonial)** - reviews with photo, rating, name and designation.
+* **[Photo Carousel](https://gutslider.com/photo)** - image carousel with lightbox support.
+* **[Logo Carousel](https://gutslider.com/brand-logos)** - client and brand logo carousel.
+* **[Before After Slider](https://gutslider.com/before-after)** - drag-to-compare image comparison slider.
+* **[Video Carousel](https://gutslider.com/videos)** - YouTube and Vimeo video carousel with custom thumbnails.
+* **[Blog Post Slider](https://gutslider.com/post-slider)** - dynamic post slider and carousel with query controls.
+* **[Marquee](https://gutslider.com/marquee)** - continuous scrolling marquee for any content.
+
+### Pro Slider and Carousel Blocks
+
+Need more? [GutSlider Pro](https://gutslider.com/pricing/) adds premium blocks and features:
+
+* **[Shader Slider](https://demos.gutslider.com/fashion-slider/)**
 * **[Shutters Slider](https://demos.gutslider.com/shutters-slider/)**
 * **[Slicer Slider](https://demos.gutslider.com/slicer-slider/)**
 * **[Fashion Slider](https://demos.gutslider.com/fashion-slider/)**
-* **[Spring Carousel](https://demos.gutslider.com/spring-carousel/)**
-* **[Frame Slider](https://gutslider.com/pricing/)**
-* **[Hover Slider](https://demos.gutslider.com/hover-slider/)**
-* **[Material Carousel](https://demos.gutslider.com/material-slider/)**
-* **[Panorama Carousel](https://demos.gutslider.com/panorama-carousel/)**
-* **[3D Carousel](https://demos.gutslider.com/3d-carousel/)**
 * **[Triple Slider](https://demos.gutslider.com/triple-slider/)**
 * **[Card Slider](https://demos.gutslider.com/card-slider/)**
+* **[Hover Slider](https://demos.gutslider.com/hover-slider/)**
+* **[Tinder Slider](https://gutslider.com/pricing/)**
+* **[Spring Carousel](https://demos.gutslider.com/spring-carousel/)**
+* **[Panorama Carousel](https://demos.gutslider.com/panorama-carousel/)**
+* **[3D Carousel](https://demos.gutslider.com/3d-carousel/)**
+* **[Material Carousel](https://demos.gutslider.com/material-slider/)**
 * **[Marquee Carousel](https://demos.gutslider.com/marquee-carousel/)**
-* **[Woo Products Carousel](https://demos.gutslider.com/product-carousel/)**
-* **[Woo Products Categories Carousel](https://demos.gutslider.com/product-categories-carousel/)**
+* **[WooCommerce Product Carousel](https://demos.gutslider.com/product-carousel/)**
+* **[WooCommerce Product Categories Carousel](https://demos.gutslider.com/product-categories-carousel/)**
+* **Thumbnail Gallery Navigation** - thumbnail-based navigation for the Static and Blog Post sliders.
 
+### Links
 
-== Third Party Resource == 
-[fslightbox](https://fslightbox.com/) is used for creating image lightbox.
+* [All Demos](https://demos.gutslider.com/)
+* [Documentation](https://gutslider.com/)
+* [Get GutSlider Pro](https://gutslider.com/pricing/)
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-e.g.
+**From your WordPress dashboard**
 
-1. Upload the plugin files to the `/wp-content/plugins/slider-blocks` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the GutSlider main menu screen to configure the plugin
-1. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
+1. Go to *Plugins > Add New* and search for **GutSlider**.
+2. Click *Install Now*, then *Activate*.
+
+**Manual installation**
+
+1. Upload the `slider-blocks` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the *Plugins* screen in WordPress.
+
+**Getting started**
+
+1. Edit any post or page, click the block inserter (+) and open the **GutSlider Blocks** category.
+2. Add the slider or carousel block you need and configure it from the sidebar.
+3. Visit *GutSlider* in the admin menu to enable or disable individual blocks.
 
 == Frequently Asked Questions ==
-= Is it responsive? =
-Yes, it is fully responsive and adapts to all screen sizes, ensuring that your sliders and carousels look great on any device.
+
+= Is GutSlider free? =
+Yes. All the blocks listed under "Free Slider and Carousel Blocks" are free forever. GutSlider Pro is an optional upgrade that adds extra blocks and features.
+
+= Do I need to know how to code? =
+No. Every slider is built visually in the block editor with drag-and-drop content and sidebar settings.
+
+= Are the sliders responsive? =
+Yes. Every slider and carousel is fully responsive, and most settings have separate Desktop, Tablet and Mobile values.
 
 = Will it slow down my site? =
-Never. it is lightweight and optimized for performance. It only loads scripts on the pages where the block is used, ensuring minimal impact on your site’s speed.
+No. GutSlider only loads its scripts and styles on pages where a slider block is used, writes a single minified CSS file per page, and does not use jQuery.
 
-= Is it built with Gutenberg Native Components? =
-Yes, it is built entirely with Gutenberg Native Components, ensuring seamless integration with the WordPress editor.
+= Does GutSlider work with any theme? =
+Yes. It works with both block themes and classic themes, and has been tested with the most popular WordPress themes.
 
-= Can I use it with any theme? =
-Yes, you can use it with any theme. It is compatible with most themes and has been tested with many popular WordPress themes.
+= Does it work in the Site Editor and with block patterns? =
+Yes. The blocks work in posts, pages, templates, template parts and reusable patterns.
 
-= I have updated the plugin but it is not working now? =
-If you encounter any issues after updating, you may face a block recovery prompt. Simply click the "Attempt Block Recovery" button or update the post/page to resolve the issue.
+= Which slider library does GutSlider use? =
+Swiper JS - a modern, touch-friendly slider library. No jQuery is required.
 
-= Does it support multiple types of sliders and carousels? =
-Yes, it supports multiple types of sliders and carousels, allowing you to showcase any type of content in various formats.
+= Can I create a slider from my blog posts or products? =
+Yes. The free Blog Post block builds a slider or carousel from your posts. WooCommerce product and product category carousels are available in GutSlider Pro.
 
-= Does it require jQuery? =
-No, it does not require jQuery. It uses Swiper JS for smooth slider performance without jQuery dependencies.
+= I updated the plugin and now I see a block error. What should I do? =
+Open the post or page in the editor and click **Attempt Block Recovery**, then update the post. This resolves block validation notices left over from a markup change.
+
+= How do I report a bug or request a feature? =
+Use the plugin's [support forum](https://wordpress.org/support/plugin/slider-blocks/) on WordPress.org.
 
 == Screenshots ==
 
-== Changelog == 
-= 2.13.2 = 
-* Fixed: Sorting setting issue fixed
+1. All GutSlider blocks available in the block inserter.
+2. Testimonial slider with photo, rating, name and designation.
+3. Photo carousel being edited, with the settings sidebar open.
+4. Photo carousel on the frontend with navigation and pagination.
+5. Before After slider for drag-to-compare image comparisons.
+6. Video carousel with YouTube and Vimeo videos.
+7. Static slider used as a full-width hero section.
 
-= 2.13.1 = 
-* Updated: Deprecated components are updated to latest
-* Checked: Compatibility check with WP 7.0
+== External Services ==
 
-= 2.13.0 = 
-* Added: New Marquee block is added
+**Google Fonts** - When you select a Google Font in a block's typography settings, the font stylesheet is requested from `https://fonts.googleapis.com` and the font files from `https://fonts.gstatic.com` on the pages where that block appears. Visitors' IP address and browser user agent are sent to Google as part of that request. No request is made if you only use system or theme fonts.
+Google Terms of Service: https://policies.google.com/terms - Google Privacy Policy: https://policies.google.com/privacy
 
-= 2.12.0 = 
-* Added: Added Patterns library 
+== Third Party Libraries ==
+
+* [Swiper JS](https://swiperjs.com/) (MIT) - slider and carousel engine.
+* [fslightbox](https://fslightbox.com/) - image lightbox for the Photo Carousel block.
+
+== Changelog ==
+= 3.0.0 =
+* Optimized for performance
+* Custom taxonomy supports for blog post block 
+* Clean Dashboard with clear settings 
+* Settings UI is improved
+
+= 2.13.2 =
+* Fixed: Sorting setting issue
+
+= 2.13.1 =
+* Updated: Deprecated components updated to the latest APIs
+* Checked: Compatibility with WordPress 7.0
+
+= 2.13.0 =
+* Added: New Marquee block
+
+= 2.12.0 =
+* Added: Patterns library
 * Added: Testimonial block visibility option for all elements
-* Updated: Sorting component is Improved
-* Updated: Blocks Icons colors are changed to native
+* Improved: Sorting component
+* Updated: Block icon colours changed to native
 
-= 2.11.4 = 
-* Fixed: Bricksbuilder conflict issue 
+= 2.11.4 =
+* Fixed: Bricks Builder conflict
 
 = 2.11.3 =
-* Fixed: Dynamic block fatal error fixed 
+* Fixed: Dynamic block fatal error
 
 = 2.11.2 =
-* Fixed: the fatal error 
+* Fixed: Fatal error
 
 = 2.11.1 =
-* Fixed: apiVersion is updated 
+* Fixed: apiVersion updated
 
 = 2.11.0 =
-* Info: Prepared for new review process 
+* Info: Prepared for the new review process
 
 = 2.10.1 =
-* Fixed photo carousel style overriding issue 
-* Fixed classic theme assets loading issue 
+* Fixed: Photo Carousel style overriding issue
+* Fixed: Classic theme assets loading issue
 
 = 2.10.0 =
-* Redesign: The admin dashboard is redesigned with a clean and elegant design.
-* Made it compatible with latest pro version
+* Redesign: Admin dashboard redesigned with a clean and elegant layout
+* Updated: Compatibility with the latest Pro version
 
 = 2.9.17 =
-* Added: Detach Content support is added for blog post block
-* Fixed: Video Custom Poster style issues are fixed
+* Added: Detach Content support for the Blog Post block
+* Fixed: Video custom poster style issues
 
-= 2.9.16 = 
-* Added: Remote Navigation is added for Static, Flexible, Photos, Videos, Testimonials, Brand Logos and Blog post Blocks.
+= 2.9.16 =
+* Added: Remote Navigation for Static, Flexible, Photos, Videos, Testimonials, Brand Logos and Blog Post blocks
 
 = 2.9.15 =
-* Added: Global link for testimonial block 
-* Added: Custom Thumbnail support for videos block
-* Fixed: Static Slider secondary button rendering issue 
+* Added: Global link for the Testimonial block
+* Added: Custom thumbnail support for the Videos block
+* Fixed: Static Slider secondary button rendering issue
 
 = 2.9.14 =
-* Added: Global link for Static and Flexible Slider Blocks 
+* Added: Global link for the Static and Flexible Slider blocks
 
-= 2.9.13 =
-* Fixed: flexible video background issue fixed 
-
-= 2.9.12 =
-* Added: Video Background support for flexible and testimonial block 
-
-= 2.9.11 =
-* Fixed: Photo Carousel Lightbox image source issue fixed
-
-= 2.9.10 =
-* Added: Centered mode is enabled for static and flexible slider block
-
-= 2.9.9 =
-* Added: Vimeo video is supported for video carousel block
-* Added: Video is supported as background for static slider block
-* Checked: Compatibility with WordPress 6.8
-
-= 2.9.8 =
-* Fixed: REM/EM unit issue fixed
-
-= 2.9.7 =
-* Fixed: Testimonial block image width-height issue fixed
-* Added: Added focus point option for testimonial block image 
-
-= 2.9.6 =
-* Fixed: Global style console error 
-* Added: Testimonial photo inline position style 
-* Improved: Responsive view in editor
-
-= 2.9.5 =
-* Fixed: Static block undefined issue fixed 
-* Added: Focus point option added for blog post slider block
-* Added: Carousel layout support is added for testimonial block 
-
-= 2.9.4 = 
-* Added: Image Focus point option is added static and testimonial blocks
-* Improved: Codes are optimized for Alignment Control
-
-= 2.9.3 =
-* Info: Making compatible with GutSlider Pro v1.2.0
-
-= 2.9.2 =
-* Fixing: fixed slider not working issue on site editor. 
-* Fixing: swiper scripts loading issue fixed.
-
-= 2.9.1 =
-* Info: making compatible with GutSlider Pro v1.1.0
-
-= 2.9.0 =
-* Info: Stable Release for GutSlider Pro
-
-= 2.8.2 =
-* Add: Testimonial new preset added
-
-= 2.8.0 + 2.8.1 =
-* making ready for GutSlider Pro
-
-= 2.7.9 =
-* Added: Style option added for Static Slider Block
-* Added: Navigation Gap added
-
-= 2.7.8 =
-* Added: Object fit option added for logos carousel block
-
-= 2.7.7 =
-* Fixed: Style files loading issue 
-* Fixed: Custom Navigation Responsive Style issue
-
-= 2.7.6 =
-* Fixed: Duplicating issue fixed
-* Fixed: Delay scripts loading issue fixed
-* Added: Horizontal Alignment, Navigation, Pagination margin settings added
-* Improved: Code Quality, Simplify development process, Improve Performance
-
-= 2.7.5 =
-* Improved: Dynamic CSS generation 
-* Added: Blog Post Slider is back 
-* Optimized: Code Quality, Simplify development process, Improve Performance
-
-= 2.7.4 =
-* Fixed: Admin notice issue fixed
-* Fixed: Carousel Column Gap
-* Added: Translation Ready
-* Improved: Code Quality, Simplify development process, Improve Performance
-
-= 2.7.3 =
-* Fixed: Security issue fixed
-
-= 2.7.2 = 
-* Added: Quick Sidebar Setting open option added
-
-= 2.7.1 =
-* Fixed: Swiper issue fixed.
-
-= 2.7.0 =
-* Added: New Videos Carousel Block
-* Updated: Slider Blocks logo updated
-
-= 2.6.1 =
-* Fixed: apiVersion issue fixed
-* Fixed: before after slider block issue fixed
-
-= 2.6.0 =
-* Added: New Before After Slider Block 
-* Update: Code Quality
-* Update: Blocks Icons 
-* Removed: Swiper Js loading settings
-
-= 2.5.5 =
-* Fixed: Typogrpahy loading issue fixed
-* Fixed: Custom Icon issue fixed 
-
-= 2.5.4 =
-* Added: Duplicating option for Fixed Content & Testimonial Slider blocks 
-* Added: Custom Transition Delay time 
-* Fixed: Custom Icon Size issue 
-* Fixed: Inner Content width issue
-* Improved: Block Preview Image 
-
-= 2.5.3 =
-* Fixed: Duplicating issue fixed
-* Added: Defautl theme colors palette added 
-* Added: Custom preview image for blocks 
-* Improved: Short the block names 
-
-= 2.5.2 =
-* Fixed: Table view issue fixed
-* Fixed: Multiple fonts loading issue fixed
-* Fixed: Minimum column for carousel set to 1 
-* Fixed: Default data issues for fixed content and testimonial sliders issues fixed
-
-= 2.5.1 =
-* Added: Button typography for fixed content slider
-* Added: Logo carousel column number increase to 10 
-* Added: Logo carousel column gap increase to 200
-* Fixed: Button transition issue fixed
-
-= 2.5.0 =
-* Added: New Logo Carousel Block
-* Fixed: Initial Navigation Issue
-* Fixed: Initial Pagination Issue
-* Fixed: Font Loading Issue
-
-= 2.4.0 =
-* Added: New Photo Carousel Block
-
-= 2.3.0 =
-* Added: New Post Slider Block
-* Added: New Post Carousel Block
-* Updated: PHP Code Quality
-
-= 2.2.2 = 
-* Fixed: Adding New Block Issue 
-* Fixed: Block Recovery Issue
-* Fixed: Direct Editor Editing Issue 
-* Fixed: Navigation Icon Color Issue 
-* Fixed: Navigation Icon Size Issue
-* Added: New Testimonial Slider Block 
-* Updated: Code Quality
-* Updated: Performance
-* Updated: Blocks' Icons 
-
-= 2.2.1 =
-* Fixed: Outer Navigation issue fixed
-= 2.2.0 =
-* Added: Complete Navigation Settings
-* Added: New Navigation Styles
-* Added: New Navigation Controls
-* Added: Complete Pagination Settings
-* Added: New Pagination Styles
-* Added: New Pagination Controls
-* Added: New Smart Admin Panel 
-* Added: Options to Enable/Disable Blocks 
-* Added: Option to enable/disable Swiper JS + CSS 
-* Improved: Code Quality
-* Improved: Performance
-
-= 2.1.0 =
-* Added: New Carousel Block
-* Added: New Slider Block
-* Added: New Effects
-* Added: New Settings
-* Added: New Options for Navigation
-* Added: New Controls
-* Improved: Code Quality
-* Improved: Performance
-
-* Note: You will face a block recovery issue after updating to this version. You need to simply click on the "Attempt Block Recovery" button.
-
-= 1.0.0 =
-* Initial Release
+For the full release history, see [changelog.txt](https://plugins.svn.wordpress.org/slider-blocks/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 2.13.2 =
+Fixes the sorting setting issue. Compatible with WordPress 7.0.
