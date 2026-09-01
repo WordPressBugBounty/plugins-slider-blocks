@@ -3,13 +3,40 @@
  * Shared dashboard shell footer.
  *
  * @package GutSliderBlocks
+ *
+ * @var bool $has_pro Whether the Pro plugin is active.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$gs_has_pro = isset( $has_pro ) ? (bool) $has_pro : defined( 'GUTSLIDER_PRO_VERSION' );
 ?>
 	</main>
+
+	<footer class="gs-appfoot">
+		<div class="gs-appfoot__inner">
+			<span>
+				<?php
+				printf(
+					/* translators: %s: link to the review page. */
+					esc_html__( 'Enjoying GutSlider? %s on WordPress.org.', 'slider-blocks' ),
+					'<a class="gs-appfoot__link" href="https://wordpress.org/support/plugin/slider-blocks/reviews/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Leave a review', 'slider-blocks' ) . '</a>'
+				);
+				?>
+			</span>
+			<span>
+				<?php
+				echo esc_html(
+					$gs_has_pro
+						? sprintf( 'GutSlider Pro %s', GUTSLIDER_VERSION )
+						: sprintf( 'GutSlider %s', GUTSLIDER_VERSION )
+				);
+				?>
+			</span>
+		</div>
+	</footer>
 
 	<div class="gs-toasts" data-gs-toasts aria-live="polite" aria-atomic="true"></div>
 

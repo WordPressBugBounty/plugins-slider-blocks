@@ -11,38 +11,40 @@
 
 .gs-app {
     /* Brand */
-    --gs-brand: #5034c5;
-    --gs-brand-hover: #4229ad;
-    --gs-brand-soft: #efecfd;
-    --gs-brand-ring: rgba(80, 52, 197, 0.28);
-    --gs-brand-grad: linear-gradient(135deg, #6a4be0 0%, #5034c5 55%, #3f27a6 100%);
+    --gs-brand: #5325e8;
+    --gs-brand-hover: #451dcc;
+    --gs-brand-soft: #efebfe;
+    --gs-brand-line: #d9cffb;
+    --gs-brand-ring: rgba(83, 37, 232, 0.28);
+    --gs-brand-grad: linear-gradient(135deg, #6a45f0 0%, #5325e8 55%, #3f1bbd 100%);
 
     /* Surfaces */
-    --gs-bg: #f6f7fb;
+    --gs-bg: #f4f5f8;
     --gs-surface: #fff;
-    --gs-surface-2: #fbfbfe;
+    --gs-surface-2: #fafafc;
     --gs-surface-sunk: #f1f2f7;
 
     /* Lines */
-    --gs-line: #e7e8ef;
-    --gs-line-strong: #d8dae4;
+    --gs-line: #e4e6ec;
+    --gs-line-strong: #d3d7e0;
 
     /* Text */
-    --gs-text: #14162b;
-    --gs-text-2: #5c6079;
-    --gs-text-3: #8b8fa6;
+    --gs-text: #12141c;
+    --gs-text-2: #5c6275;
+    --gs-text-3: #8a90a2;
 
     /* Status */
     --gs-ok: #12855a;
-    --gs-ok-soft: #e6f6ef;
+    --gs-ok-soft: #e4f5ee;
     --gs-danger: #c0362c;
     --gs-danger-soft: #fdeceb;
-    --gs-gold: #b7791f;
-    --gs-gold-soft: #fdf3e0;
+    --gs-gold: #b45309;
+    --gs-gold-soft: #fdf2e3;
 
     /* Shape */
     --gs-r-sm: 8px;
-    --gs-r: 12px;
+    --gs-r-md: 10px;
+    --gs-r: 14px;
     --gs-r-lg: 18px;
     --gs-r-full: 999px;
 
@@ -59,11 +61,12 @@
 
 .gs-app[data-gs-theme='dark'],
 .gs-app.gs-dark {
-    --gs-brand: #8d76ff;
-    --gs-brand-hover: #a08fff;
+    --gs-brand: #9b83ff;
+    --gs-brand-hover: #b09dff;
     --gs-brand-soft: #241f3d;
-    --gs-brand-ring: rgba(141, 118, 255, 0.35);
-    --gs-brand-grad: linear-gradient(135deg, #6f56e8 0%, #5b3fd0 55%, #43299f 100%);
+    --gs-brand-line: #362f5c;
+    --gs-brand-ring: rgba(155, 131, 255, 0.35);
+    --gs-brand-grad: linear-gradient(135deg, #7a5df0 0%, #5f3fd8 55%, #4529ad 100%);
 
     --gs-bg: #0e0f1a;
     --gs-surface: #16182a;
@@ -101,9 +104,9 @@ body.gutslider-admin-page #wpbody-content {
     padding-bottom: 0;
 }
 
+/* The shell prints its own footer bar, so the wp-admin one is redundant. */
 body.gutslider-admin-page #wpfooter {
-    padding-left: 24px;
-    padding-right: 24px;
+    display: none;
 }
 
 /* Hide third-party nags printed outside our shell. Notices we render
@@ -125,9 +128,10 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
 
 .gs-app {
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     min-height: calc(100vh - 32px);
     margin: 0;
-    padding-bottom: 96px;
     background: var(--gs-bg);
     color: var(--gs-text);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -162,13 +166,15 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
 
 .gs-shell {
     width: 100%;
-    max-width: 1240px;
+    max-width: 1248px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
 .gs-main {
     display: block;
+    flex: 1 0 auto;
+    padding-bottom: 56px;
 }
 
 .gs-stack {
@@ -201,14 +207,16 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     }
 }
 
+/* Three tracks so the nav stays optically centred whatever flanks it. */
 .gs-bar__inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 24px;
-    max-width: 1240px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 24px;
-    height: 64px;
+    padding: 0 28px;
+    height: 60px;
 }
 
 .gs-brand {
@@ -217,7 +225,8 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     gap: 10px;
     text-decoration: none;
     color: var(--gs-text);
-    flex-shrink: 0;
+    justify-self: start;
+    min-width: 0;
 }
 
 .gs-brand:hover,
@@ -228,49 +237,47 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
 .gs-brand__mark {
     display: grid;
     place-items: center;
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
     border-radius: var(--gs-r-sm);
-    background: var(--gs-brand-grad);
+    background: var(--gs-brand);
     color: #fff;
-    box-shadow: 0 4px 12px -4px var(--gs-brand-ring);
 }
 
 .gs-brand__mark svg {
-    width: 17px;
-    height: 17px;
+    width: 14px;
+    height: 14px;
     display: block;
-}
-
-.gs-brand__text {
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
 .gs-brand__name {
     font-size: 15px;
     font-weight: 650;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.013em;
 }
 
 .gs-chip {
     display: inline-flex;
     align-items: center;
     height: 20px;
-    padding: 0 8px;
-    border-radius: var(--gs-r-full);
+    padding: 0 7px;
+    border-radius: 6px;
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    background: var(--gs-surface-sunk);
-    color: var(--gs-text-3);
+    font-weight: 550;
+    letter-spacing: 0;
+    background: var(--gs-surface-2);
+    color: var(--gs-text-2);
     border: 1px solid var(--gs-line);
 }
 
 .gs-chip--pro {
-    background: var(--gs-brand-grad);
-    color: #fff;
+    padding: 0 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    background: var(--gs-brand-soft);
+    color: var(--gs-brand);
     border-color: transparent;
 }
 
@@ -280,7 +287,6 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     display: flex;
     align-items: center;
     gap: 2px;
-    flex: 1;
     min-width: 0;
     overflow-x: auto;
     scrollbar-width: none;
@@ -294,8 +300,8 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     position: relative;
     display: inline-flex;
     align-items: center;
-    height: 34px;
-    padding: 0 14px;
+    height: 32px;
+    padding: 0 12px;
     border-radius: var(--gs-r-sm);
     font-size: 13.5px;
     font-weight: 550;
@@ -315,24 +321,25 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
 .gs-nav__link.is-active {
     color: var(--gs-brand);
     background: var(--gs-brand-soft);
+    font-weight: 600;
 }
 
 .gs-bar__actions {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-shrink: 0;
+    justify-self: end;
 }
 
 .gs-icon-btn {
     display: grid;
     place-items: center;
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     padding: 0;
-    border: 1px solid transparent;
+    border: 1px solid var(--gs-line);
     border-radius: var(--gs-r-sm);
-    background: transparent;
+    background: var(--gs-surface);
     color: var(--gs-text-2);
     cursor: pointer;
     text-decoration: none;
@@ -340,8 +347,8 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
 }
 
 .gs-icon-btn:hover {
-    background: var(--gs-surface-sunk);
-    border-color: var(--gs-line);
+    background: var(--gs-surface-2);
+    border-color: var(--gs-line-strong);
     color: var(--gs-text);
 }
 
@@ -372,9 +379,9 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    height: 40px;
-    padding: 0 18px;
+    gap: 7px;
+    height: 36px;
+    padding: 0 14px;
     border: 1px solid transparent;
     border-radius: var(--gs-r-sm);
     font-family: inherit;
@@ -405,9 +412,7 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
 .gs-btn--primary {
     background: var(--gs-brand);
     color: #fff;
-    box-shadow:
-        0 1px 2px rgba(20, 22, 43, 0.12),
-        0 6px 16px -8px var(--gs-brand-ring);
+    box-shadow: 0 1px 2px rgba(18, 20, 28, 0.08);
 }
 
 .gs-btn--primary:hover,
@@ -546,16 +551,11 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
 
 .gs-eyebrow {
     display: inline-block;
-    margin-bottom: 14px;
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 700;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--gs-brand);
-}
-
-.gs-eyebrow--light {
-    color: rgba(255, 255, 255, 0.72);
 }
 
 .gs-page-head {
@@ -567,14 +567,54 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     padding-top: 40px;
 }
 
+.gs-page-head__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .gs-page-title {
-    font-size: 26px;
+    font-size: 23px;
+    letter-spacing: -0.026em;
 }
 
 .gs-page-sub {
-    max-width: 62ch;
-    margin-top: 6px;
+    max-width: 68ch;
+    margin-top: 5px;
+    font-size: 13.5px;
     color: var(--gs-text-2);
+}
+
+/* Status pill — licence state in the page header. */
+
+.gs-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border-radius: var(--gs-r-full);
+    font-size: 12.5px;
+    font-weight: 550;
+    background: var(--gs-ok-soft);
+    color: var(--gs-ok);
+}
+
+.gs-pill__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentcolor;
+}
+
+.gs-pill--expiring {
+    background: var(--gs-gold-soft);
+    color: var(--gs-gold);
+}
+
+.gs-pill--inactive {
+    background: var(--gs-danger-soft);
+    color: var(--gs-danger);
 }
 
 .gs-count {
@@ -589,158 +629,206 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     color: var(--gs-text-2);
 }
 
-.gs-section__head {
-    margin-bottom: 20px;
-}
-
-.gs-section__title {
-    font-size: 19px;
-}
-
-.gs-section__sub {
-    margin-top: 4px;
-    color: var(--gs-text-2);
-}
-
 /* ------------------------------------------------------------------
- * 7. Hero
+ * 7. Dashboard layout
  * ---------------------------------------------------------------- */
 
-.gs-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 56px 0 52px;
-    background: var(--gs-surface);
-    border-bottom: 1px solid var(--gs-line);
+.gs-page {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    /* Matches the top opening on the blocks and settings screens. */
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.gs-hero::before {
-    content: '';
-    position: absolute;
-    top: -180px;
-    right: -120px;
-    width: 520px;
-    height: 520px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--gs-brand-ring) 0%, transparent 68%);
-    opacity: 0.55;
-    pointer-events: none;
+.gs-page .gs-page-head {
+    padding-top: 0;
 }
 
-.gs-hero__grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-    gap: 48px;
+/* Top banner — licence prompts and similar, supplied by filter. */
+
+.gs-banner {
+    display: flex;
     align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 16px 18px;
+    border-radius: var(--gs-r);
+    border: 1px solid var(--gs-line);
+    background: var(--gs-surface);
+    box-shadow: var(--gs-shadow-sm);
 }
 
-.gs-hero__title {
-    font-size: clamp(28px, 3.4vw, 40px);
-    letter-spacing: -0.03em;
+.gs-banner__icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: var(--gs-r-sm);
+    border: 1px solid var(--gs-line);
+    background: var(--gs-brand-soft);
+    color: var(--gs-brand);
 }
 
-.gs-hero__lead {
-    max-width: 52ch;
-    margin-top: 14px;
-    font-size: 15px;
+.gs-banner__text {
+    flex: 1;
+    min-width: 220px;
+}
+
+.gs-banner__title {
+    display: block;
+    font-size: 14px;
+    font-weight: 620;
+    color: var(--gs-text);
+}
+
+.gs-banner__sub {
+    margin-top: 2px;
+    font-size: 12.5px;
+    line-height: 1.5;
     color: var(--gs-text-2);
 }
 
-.gs-hero__actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 26px;
-    flex-wrap: wrap;
+/* Toned banners keep a hairline border tinted from their own accent, so the
+   edge reads as intentional rather than as a colour block on the page. */
+
+.gs-banner--warning {
+    border-color: #f0ddc2;
+    border-color: color-mix(in srgb, var(--gs-gold) 20%, transparent);
+    background: var(--gs-gold-soft);
 }
 
-.gs-hero__stats {
+.gs-banner--warning .gs-banner__icon {
+    border-color: #f0ddc2;
+    border-color: color-mix(in srgb, var(--gs-gold) 20%, transparent);
+    background: var(--gs-surface);
+    color: var(--gs-gold);
+}
+
+.gs-banner--error {
+    border-color: #f7d7d4;
+    border-color: color-mix(in srgb, var(--gs-danger) 20%, transparent);
+    background: var(--gs-danger-soft);
+}
+
+.gs-banner--error .gs-banner__icon {
+    border-color: #f7d7d4;
+    border-color: color-mix(in srgb, var(--gs-danger) 20%, transparent);
+    background: var(--gs-surface);
+    color: var(--gs-danger);
+}
+
+.gs-banner--info {
+    border-color: var(--gs-brand-line);
+    background: var(--gs-brand-soft);
+}
+
+.gs-banner--info .gs-banner__icon {
+    border-color: var(--gs-brand-line);
+    background: var(--gs-surface);
+}
+
+/* Metric row */
+
+.gs-metrics {
     display: grid;
-    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
 }
 
-.gs-stat {
+.gs-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding: 18px;
     border-radius: var(--gs-r);
-    background: var(--gs-surface-2);
+    background: var(--gs-surface);
     border: 1px solid var(--gs-line);
 }
 
-.gs-stat__value {
-    display: block;
-    font-size: 30px;
-    font-weight: 680;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
+.gs-metric__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.gs-stat__value--sm {
-    font-size: 17px;
-    margin-bottom: 2px;
-}
-
-.gs-stat__label {
-    display: block;
+.gs-metric__label {
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight: 550;
     color: var(--gs-text-2);
 }
 
-.gs-stat__meta {
-    display: block;
+.gs-metric__icon {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    background: var(--gs-brand-soft);
+    color: var(--gs-brand);
+}
+
+.gs-metric__icon .gs-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.gs-metric__value {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 30px;
+    font-weight: 680;
+    line-height: 1;
+    letter-spacing: -0.033em;
+    font-variant-numeric: tabular-nums;
+}
+
+.gs-metric__unit {
+    font-size: 13px;
+    font-weight: 550;
+    letter-spacing: 0;
+    color: var(--gs-text-3);
+}
+
+.gs-metric__foot {
     font-size: 12px;
     color: var(--gs-text-3);
 }
 
-.gs-stat--split {
+/* Two-column body */
+
+.gs-cols {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    grid-template-columns: minmax(0, 1fr) 372px;
+    align-items: start;
+    gap: 22px;
 }
 
-.gs-stat--split .gs-stat__value {
-    font-size: 22px;
-}
-
-.gs-stat--status.is-pro {
-    background: var(--gs-brand-soft);
-    border-color: transparent;
-}
-
-.gs-meter {
-    margin-top: 12px;
-    height: 6px;
-    border-radius: var(--gs-r-full);
-    background: var(--gs-surface-sunk);
-    overflow: hidden;
-}
-
-.gs-meter__fill {
-    display: block;
-    height: 100%;
-    width: var(--gs-meter, 0%);
-    border-radius: inherit;
-    background: var(--gs-brand-grad);
-    transition: width 600ms var(--gs-ease);
+.gs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
 }
 
 /* ------------------------------------------------------------------
  * 8. Cards & grids
  * ---------------------------------------------------------------- */
 
-.gs-section {
-    padding-top: 4px;
-}
-
 .gs-shell.gs-stack {
     padding-top: 40px;
     padding-bottom: 40px;
 }
 
-/* Extra breathing room where content follows the dashboard hero. */
-.gs-hero + .gs-shell.gs-stack {
-    padding-top: 64px;
+/* The stack already opens with 40px, so the head must not add its own. */
+.gs-shell.gs-stack > .gs-page-head {
+    padding-top: 0;
 }
 
 .gs-grid {
@@ -748,169 +836,555 @@ body.gutslider-admin-page #wpbody-content > .notice.gs-keep {
     gap: 16px;
 }
 
-/* Stretch, so cards in a row share one height regardless of copy length. */
-.gs-grid--3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
-}
-
-/* Stacked grids are siblings, not flex children, so they need their own
-   separation — a little more than the in-grid gap to read as a new group. */
-.gs-grid + .gs-grid {
-    margin-top: 24px;
-}
-
 .gs-grid--cards {
     grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
 }
 
+/* ------------------------------------------------------------------
+ * 8. Cards
+ * ---------------------------------------------------------------- */
+
 .gs-card {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    padding: 20px;
     border-radius: var(--gs-r);
     background: var(--gs-surface);
     border: 1px solid var(--gs-line);
-    box-shadow: var(--gs-shadow-sm);
     text-decoration: none;
     color: inherit;
     transition:
-        transform var(--gs-mid),
-        box-shadow var(--gs-mid),
-        border-color var(--gs-mid);
+        border-color var(--gs-mid),
+        box-shadow var(--gs-mid);
+}
+
+/* Flush cards let their header, list and footer own the edges. */
+.gs-card--flush {
+    overflow: hidden;
+}
+
+.gs-card--pad {
+    gap: 16px;
+    padding: 18px;
+}
+
+.gs-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--gs-line);
+}
+
+/* Inside a padded card the header is just the top row, not a band. */
+.gs-card__head--plain {
+    padding: 0;
+    border-bottom: 0;
+}
+
+.gs-card__head--tight {
+    padding: 15px 18px 11px;
+    border-bottom: 0;
+}
+
+.gs-card__heading {
+    font-size: 15px;
+    font-weight: 620;
+    letter-spacing: -0.008em;
+}
+
+.gs-card__sub {
+    margin-top: 3px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--gs-text-3);
 }
 
 .gs-card__body {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     align-items: flex-start;
+    padding: 16px;
 }
 
-.gs-card__title {
-    font-size: 15px;
-    font-weight: 640;
-}
-
-.gs-card__text {
-    font-size: 13.5px;
+.gs-card__body .gs-card__sub {
     color: var(--gs-text-2);
+}
+
+.gs-card__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 13px 18px;
+    background: var(--gs-surface-2);
+    border-top: 1px solid var(--gs-line);
+}
+
+.gs-card__summary {
+    font-size: 12.5px;
+    color: var(--gs-text-2);
+    font-variant-numeric: tabular-nums;
 }
 
 .gs-card--link:hover,
 .gs-card--link:focus {
-    transform: translateY(-2px);
     border-color: var(--gs-brand);
     box-shadow: var(--gs-shadow);
     color: inherit;
 }
 
-.gs-card--link {
-    flex-direction: row;
-    gap: 14px;
-    align-items: flex-start;
+/* ------------------------------------------------------------------
+ * 8b. Block rows
+ * ---------------------------------------------------------------- */
+
+.gs-rows {
+    --gs-row-h: 62px;
+    --gs-row-gap: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gs-row-gap);
+
+    /* Exactly five rows, then scroll — the card must not run the length
+       of the page. Scroll chaining is left alone so the wheel carries on
+       down the page once the list bottoms out. */
+    max-height: calc((5 * var(--gs-row-h)) + (4 * var(--gs-row-gap)) + 28px);
+    overflow-y: auto;
+    padding: 14px;
 }
 
-.gs-card__icon {
+.gs-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--gs-r-md);
+    background: var(--gs-surface);
+    border: 1px solid var(--gs-line);
+    transition:
+        border-color var(--gs-fast),
+        background var(--gs-fast);
+}
+
+.gs-row:hover {
+    border-color: var(--gs-line-strong);
+}
+
+.gs-row.is-dirty {
+    border-color: var(--gs-brand);
+    background: var(--gs-brand-soft);
+}
+
+.gs-row.is-hidden {
+    display: none;
+}
+
+.gs-row__icon {
     display: grid;
     place-items: center;
     width: 34px;
     height: 34px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: var(--gs-brand-soft);
+    color: var(--gs-brand);
+}
+
+.gs-row__icon .gs-icon {
+    width: 17px;
+    height: 17px;
+}
+
+.gs-row__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Pinned line heights: the row must measure a predictable --gs-row-h so
+   the list crops to a whole number of rows. */
+.gs-row__name {
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 18px;
+    color: var(--gs-text);
+}
+
+/* Off and locked blocks recede without disappearing. */
+.gs-row.is-off .gs-row__icon,
+.gs-row.is-locked .gs-row__icon {
+    background: var(--gs-surface-2);
+    color: var(--gs-text-3);
+}
+
+.gs-row.is-off .gs-row__name,
+.gs-row.is-locked .gs-row__name {
+    color: var(--gs-text-2);
+}
+
+.gs-row__desc {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--gs-text-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------
+ * 8c. Get started
+ * ---------------------------------------------------------------- */
+
+.gs-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.gs-progress__count {
+    font-size: 12px;
+    font-weight: 550;
+    color: var(--gs-text-2);
+    white-space: nowrap;
+}
+
+.gs-progress__track {
+    display: block;
+    width: 96px;
+    height: 6px;
+    border-radius: var(--gs-r-full);
+    background: var(--gs-line);
+    overflow: hidden;
+}
+
+.gs-progress__fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--gs-brand);
+    transition: width 600ms var(--gs-ease);
+}
+
+.gs-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.gs-step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 14px;
+    border-radius: var(--gs-r-md);
+    background: var(--gs-surface-2);
+    border: 1px solid var(--gs-line);
+}
+
+.gs-step.is-done {
+    background: var(--gs-brand-soft);
+    border-color: var(--gs-brand-line);
+}
+
+.gs-step__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gs-step__n {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--gs-text-3);
+    font-variant-numeric: tabular-nums;
+}
+
+.gs-step__check {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--gs-brand);
+    color: #fff;
+}
+
+.gs-step__check .gs-icon {
+    width: 11px;
+    height: 11px;
+    stroke-width: 3;
+}
+
+.gs-step__title {
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.gs-step__text {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--gs-text-2);
+}
+
+/* ------------------------------------------------------------------
+ * 8d. Walkthrough
+ * ---------------------------------------------------------------- */
+
+.gs-video {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 196px;
+    padding: 0;
+    border: 0;
+    background: #14152a;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.gs-video__stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background:
+        radial-gradient(ellipse 55% 60% at 50% 15%, rgba(83, 37, 232, 0.9) 0%, rgba(83, 37, 232, 0) 100%);
+}
+
+.gs-video__slides {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 104px;
+}
+
+.gs-video__slide {
+    width: 34px;
+    height: 72px;
+    border-radius: var(--gs-r-sm);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gs-video__slide--main {
+    width: 150px;
+    height: 104px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.gs-video__dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.gs-video__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.gs-video__dot.is-active {
+    background: #fff;
+}
+
+.gs-video__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--gs-brand);
+    box-shadow: 0 6px 20px rgba(11, 11, 20, 0.35);
+    transition: transform var(--gs-mid);
+}
+
+.gs-video__play .gs-icon {
+    width: 19px;
+    height: 19px;
+    margin-left: 2px;
+}
+
+.gs-video:hover .gs-video__play {
+    transform: translate(-50%, -50%) scale(1.06);
+}
+
+.gs-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ------------------------------------------------------------------
+ * 8e. What's new
+ * ---------------------------------------------------------------- */
+
+.gs-news {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gs-news__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+}
+
+.gs-news__text {
+    flex: 1;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--gs-text-2);
+}
+
+/* ------------------------------------------------------------------
+ * 8f. Help & support
+ * ---------------------------------------------------------------- */
+
+.gs-help {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px 18px;
+    border-top: 1px solid var(--gs-line);
+    text-decoration: none;
+    color: inherit;
+    transition: background var(--gs-fast);
+}
+
+.gs-help:hover,
+.gs-help:focus {
+    background: var(--gs-surface-2);
+    color: inherit;
+}
+
+.gs-help__icon {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
     flex-shrink: 0;
     border-radius: var(--gs-r-sm);
     background: var(--gs-brand-soft);
     color: var(--gs-brand);
 }
 
-.gs-card--step {
-    flex-direction: row;
-    gap: 14px;
-    align-items: flex-start;
+.gs-help__icon .gs-icon {
+    width: 15px;
+    height: 15px;
 }
 
-.gs-step__n {
+.gs-help__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.gs-help__title {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.gs-help__sub {
     font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
     color: var(--gs-text-3);
-    padding-top: 2px;
 }
 
-/* Feature row: the walkthrough gets the lion's share of the width, with
-   the numbered steps riding alongside it. */
-/* The walkthrough still leads, but at a width where its 16:9 frame plus
-   caption lands level with the three steps beside it. Both columns
-   stretch, and the steps share the leftover height evenly. */
-.gs-grid--feature {
-    grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+.gs-help__chevron {
+    flex-shrink: 0;
+    color: var(--gs-text-3);
+}
+
+/* ------------------------------------------------------------------
+ * 8g. More from the workshop
+ * ---------------------------------------------------------------- */
+
+.gs-workshop {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 12px;
+}
+
+.gs-workshop__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;
+    gap: 16px;
 }
 
-.gs-grid--feature > .gs-stack {
-    height: 100%;
+.gs-workshop__grid .gs-card {
+    gap: 8px;
 }
 
-.gs-grid--feature .gs-card--step {
-    flex: 1 1 0;
-}
-
-/* The video bleeds to the card edges and leads; copy sits underneath. */
-.gs-card--media {
-    gap: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.gs-card--media .gs-card__body {
-    padding: 20px 24px 24px;
-}
-
-.gs-card--media:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--gs-shadow);
-}
-
-.gs-card__kicker {
-    display: inline-flex;
+.gs-product__top {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 2px;
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    gap: 10px;
+}
+
+.gs-product__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gs-text);
+}
+
+/* ------------------------------------------------------------------
+ * 8h. App footer
+ * ---------------------------------------------------------------- */
+
+.gs-appfoot {
+    flex-shrink: 0;
+    background: var(--gs-surface);
+    border-top: 1px solid var(--gs-line);
+}
+
+.gs-appfoot__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 12.5px;
+    color: var(--gs-text-3);
+}
+
+.gs-appfoot__link {
+    color: var(--gs-text-2);
+}
+
+.gs-appfoot__link:hover {
     color: var(--gs-brand);
-}
-
-.gs-card__kicker .gs-icon {
-    width: 13px;
-    height: 13px;
-}
-
-.gs-card__title--lg {
-    font-size: 21px;
-    letter-spacing: -0.02em;
-}
-
-.gs-embed {
-    position: relative;
-    padding-top: 56.25%;
-    border-radius: var(--gs-r-sm);
-    overflow: hidden;
-    background: var(--gs-surface-sunk);
-}
-
-.gs-card--media .gs-embed {
-    border-radius: 0;
-}
-
-.gs-embed iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
 }
 
 /* ------------------------------------------------------------------
@@ -1005,6 +1479,26 @@ input.gs-search__input::-webkit-search-cancel-button {
 .gs-search__input:focus ~ .gs-search__kbd,
 .gs-search__input:not(:placeholder-shown) ~ .gs-search__kbd {
     opacity: 0;
+}
+
+/* Compact variant for card headers, where the field sits beside a title. */
+.gs-search--sm {
+    flex: 0 0 220px;
+    min-width: 0;
+}
+
+.gs-search--sm .gs-icon {
+    left: 10px;
+    width: 14px;
+    height: 14px;
+}
+
+.gs-search--sm input.gs-search__input {
+    height: 34px;
+    padding: 0 12px 0 32px;
+    border-color: var(--gs-line);
+    background: var(--gs-surface-2);
+    font-size: 13px;
 }
 
 .gs-segment {
@@ -1153,19 +1647,39 @@ input.gs-search__input::-webkit-search-cancel-button {
 .gs-tag {
     display: inline-flex;
     align-items: center;
-    height: 20px;
+    flex-shrink: 0;
+    height: 21px;
     padding: 0 8px;
-    border-radius: var(--gs-r-full);
-    background: var(--gs-surface-sunk);
+    border-radius: 6px;
+    background: var(--gs-surface-2);
     border: 1px solid var(--gs-line);
     font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--gs-text-3);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--gs-text-2);
 }
 
 .gs-tag--pro {
+    background: var(--gs-brand-soft);
+    border-color: var(--gs-brand-line);
+    color: var(--gs-brand);
+}
+
+/* Release-note tags. */
+
+.gs-tag--new {
+    background: var(--gs-brand-soft);
+    border-color: transparent;
+    color: var(--gs-brand);
+}
+
+.gs-tag--improved {
+    background: var(--gs-ok-soft);
+    border-color: transparent;
+    color: var(--gs-ok);
+}
+
+.gs-tag--fixed {
     background: var(--gs-gold-soft);
     border-color: transparent;
     color: var(--gs-gold);
@@ -1174,22 +1688,27 @@ input.gs-search__input::-webkit-search-cancel-button {
 .gs-lock {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     height: 28px;
-    padding: 0 12px;
+    min-width: 34px;
+    padding: 0 9px;
+    flex-shrink: 0;
     border-radius: var(--gs-r-full);
-    background: var(--gs-gold-soft);
-    color: var(--gs-gold);
+    background: var(--gs-surface-2);
+    border: 1px solid var(--gs-line);
+    color: var(--gs-text-3);
     font-size: 12px;
     font-weight: 650;
     text-decoration: none;
-    transition: filter var(--gs-fast);
+    transition: all var(--gs-fast);
 }
 
 .gs-lock:hover,
 .gs-lock:focus {
-    color: var(--gs-gold);
-    filter: brightness(0.96);
+    background: var(--gs-brand-soft);
+    border-color: var(--gs-brand-line);
+    color: var(--gs-brand);
 }
 
 .gs-lock .gs-icon {
@@ -1219,9 +1738,9 @@ input.gs-search__input::-webkit-search-cancel-button {
 
 .gs-switch__track {
     display: block;
-    width: 40px;
-    height: 23px;
-    padding: 3px;
+    width: 34px;
+    height: 20px;
+    padding: 2px;
     border-radius: var(--gs-r-full);
     background: var(--gs-line-strong);
     transition: background var(--gs-mid);
@@ -1229,11 +1748,11 @@ input.gs-search__input::-webkit-search-cancel-button {
 
 .gs-switch__thumb {
     display: block;
-    width: 17px;
-    height: 17px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(20, 22, 43, 0.3);
+    box-shadow: 0 1px 2px rgba(18, 20, 28, 0.25);
     transform: translateX(0);
     transition: transform var(--gs-mid);
 }
@@ -1243,7 +1762,7 @@ input.gs-search__input::-webkit-search-cancel-button {
 }
 
 .gs-switch__input:checked ~ .gs-switch__track .gs-switch__thumb {
-    transform: translateX(17px);
+    transform: translateX(14px);
 }
 
 .gs-switch__input:focus-visible ~ .gs-switch__track {
@@ -1289,6 +1808,20 @@ input.gs-search__input::-webkit-search-cancel-button {
     height: 28px;
 }
 
+/* Inside a card the empty state is a quiet strip, not a dashed panel. */
+.gs-empty--sm {
+    gap: 8px;
+    padding: 28px 18px;
+    border: 0;
+    border-radius: 0;
+    font-size: 13px;
+}
+
+.gs-empty--sm .gs-icon {
+    width: 20px;
+    height: 20px;
+}
+
 .gs-note {
     display: flex;
     align-items: flex-start;
@@ -1311,82 +1844,7 @@ input.gs-search__input::-webkit-search-cancel-button {
 }
 
 /* ------------------------------------------------------------------
- * 13. Promo band
- * ---------------------------------------------------------------- */
-
-.gs-promo {
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
-    gap: 40px;
-    align-items: center;
-    padding: 40px;
-    border-radius: var(--gs-r-lg);
-    background: var(--gs-brand-grad);
-    color: #fff;
-    box-shadow: var(--gs-shadow);
-}
-
-.gs-promo::after {
-    content: '';
-    position: absolute;
-    right: -80px;
-    bottom: -140px;
-    width: 380px;
-    height: 380px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    pointer-events: none;
-}
-
-.gs-promo__copy {
-    position: relative;
-}
-
-.gs-promo__title {
-    font-size: 26px;
-    color: #fff;
-    letter-spacing: -0.03em;
-}
-
-.gs-promo__text {
-    max-width: 48ch;
-    margin-top: 10px;
-    color: rgba(255, 255, 255, 0.82);
-}
-
-.gs-promo .gs-btn {
-    margin-top: 22px;
-}
-
-.gs-promo__list {
-    position: relative;
-    display: grid;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.gs-promo__list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
-    font-size: 13.5px;
-    font-weight: 550;
-    color: rgba(255, 255, 255, 0.92);
-}
-
-.gs-promo__list .gs-icon {
-    width: 15px;
-    height: 15px;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* ------------------------------------------------------------------
- * 14. Settings
+ * 13. Settings
  * ---------------------------------------------------------------- */
 
 .gs-settings {
@@ -1608,7 +2066,7 @@ input.gs-search__input::-webkit-search-cancel-button {
 }
 
 /* ------------------------------------------------------------------
- * 15. Save bar
+ * 14. Save bar
  * ---------------------------------------------------------------- */
 
 /* Kept in the layout so the slide-in can animate; visibility (rather than
@@ -1701,7 +2159,7 @@ input.gs-search__input::-webkit-search-cancel-button {
 }
 
 /* ------------------------------------------------------------------
- * 16. Toasts
+ * 15. Toasts
  * ---------------------------------------------------------------- */
 
 .gs-toasts {
@@ -1776,25 +2234,29 @@ input.gs-search__input::-webkit-search-cancel-button {
 }
 
 /* ------------------------------------------------------------------
- * 17. Responsive
+ * 16. Responsive
  * ---------------------------------------------------------------- */
 
-@media (max-width: 1100px) {
-    .gs-grid--3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .gs-grid--feature {
+@media (max-width: 1240px) {
+    .gs-cols {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .gs-hero__grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
+    /* The sidebar cards read better side by side once they drop below. */
+    .gs-col--side {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+}
+
+@media (max-width: 1100px) {
+    .gs-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .gs-hero__stats {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .gs-workshop__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .gs-settings {
@@ -1819,26 +2281,27 @@ input.gs-search__input::-webkit-search-cancel-button {
         top: 46px;
     }
 
+    /* Stack the three bar tracks: brand and actions share a row, the nav
+       runs full width underneath. */
     .gs-bar__inner {
         height: auto;
         min-height: 60px;
         padding: 10px 16px;
-        flex-wrap: wrap;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 10px;
     }
 
     .gs-nav {
         order: 3;
-        width: 100%;
-        flex: 1 0 100%;
-    }
-
-    .gs-bar__actions {
-        margin-left: auto;
+        grid-column: 1 / -1;
     }
 
     .gs-shell {
         padding: 0 16px;
+    }
+
+    .gs-appfoot__inner {
+        padding: 16px;
     }
 
     .gs-toolbar {
@@ -1855,15 +2318,25 @@ input.gs-search__input::-webkit-search-cancel-button {
         flex: 1;
     }
 
-    .gs-grid--3,
-    .gs-hero__stats,
-    .gs-promo,
+    .gs-metrics,
+    .gs-steps,
+    .gs-workshop__grid,
+    .gs-col--side,
     .gs-radio-cards {
         grid-template-columns: 1fr;
     }
 
-    .gs-promo {
-        padding: 28px;
+    .gs-card__head {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .gs-search--sm {
+        flex: 1 1 auto;
+    }
+
+    .gs-row__desc {
+        white-space: normal;
     }
 
     .gs-field {
@@ -1900,7 +2373,7 @@ input.gs-search__input::-webkit-search-cancel-button {
 }
 
 /* ------------------------------------------------------------------
- * 18. Motion preferences
+ * 17. Motion preferences
  * ---------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

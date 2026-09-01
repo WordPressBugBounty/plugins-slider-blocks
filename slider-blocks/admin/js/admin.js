@@ -132,6 +132,34 @@
     })();
 
     /* ----------------------------------------------------------------
+     * Walkthrough — a facade, so YouTube only loads if it is asked for
+     * -------------------------------------------------------------- */
+
+    (function walkthrough() {
+        var trigger = $('[data-gs-video]');
+
+        if (!trigger) {
+            return;
+        }
+
+        trigger.addEventListener('click', function () {
+            var frame = document.createElement('iframe');
+
+            frame.src = trigger.getAttribute('data-gs-video');
+            frame.title = trigger.getAttribute('data-gs-video-title') || '';
+            frame.allow =
+                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            frame.referrerPolicy = 'strict-origin-when-cross-origin';
+            frame.allowFullscreen = true;
+
+            trigger.innerHTML = '';
+            trigger.appendChild(frame);
+            trigger.disabled = true;
+            trigger.style.cursor = 'default';
+        });
+    })();
+
+    /* ----------------------------------------------------------------
      * Save bar — shared by the blocks and settings screens
      * -------------------------------------------------------------- */
 
@@ -234,10 +262,18 @@
         var cards = $$('[data-gs-block]', screen);
         var searchInput = $('[data-gs-search]', screen);
         var counter = $('[data-gs-counter]', screen);
+        var summary = $('[data-gs-summary]', screen);
+        var metricValue = $('[data-gs-metric-enabled]', screen);
+        var metricNote = $('[data-gs-metric-note]', screen);
         var empty = $('[data-gs-empty]', screen);
         var grid = $('[data-gs-grid]', screen);
         var filter = 'all';
         var query = '';
+
+        var freeTotal = cards.filter(function (card) {
+            return card.getAttribute('data-gs-tier') === 'free';
+        }).length;
+        var proTotal = cards.length - freeTotal;
 
         var state = {};
         var initial = {};
@@ -296,6 +332,24 @@
 
             if (counter) {
                 counter.textContent = sprintf(i18n.enabledCount, [enabled, cards.length]);
+            }
+
+            if (summary) {
+                summary.textContent = sprintf(i18n.blockSummary, [
+                    freeTotal,
+                    proTotal,
+                    enabled,
+                    cards.length
+                ]);
+            }
+
+            if (metricValue) {
+                metricValue.textContent = String(enabled);
+            }
+
+            if (metricNote) {
+                var off = cards.length - enabled;
+                metricNote.textContent = off > 0 ? sprintf(i18n.someDisabled, [off]) : i18n.allEnabled;
             }
         }
 

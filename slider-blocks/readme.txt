@@ -2,8 +2,8 @@
 Contributors: binsaifullah
 Tags: slider, carousel, slider block, gutenberg slider, image slider
 Requires at least: 6.5
-Tested up to: 7.0
-Stable tag: 3.0.0
+Tested up to: 7.1
+Stable tag: 3.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -146,6 +146,12 @@ Google Terms of Service: https://policies.google.com/terms - Google Privacy Poli
 * [fslightbox](https://fslightbox.com/) - image lightbox for the Photo Carousel block.
 
 == Changelog ==
+= 3.1.0 =
+* Added: Redesigned dashboard with live block, usage and front-end weight figures
+* Added: New start screen when a slider block is first inserted, with a pattern shortcut
+* Added: Blocks can be switched on and off straight from the dashboard
+* Improved: Release notes and getting-started progress now reflect the real state of the site
+
 = 3.0.0 =
 * Optimized for performance
 * Custom taxonomy supports for blog post block 
