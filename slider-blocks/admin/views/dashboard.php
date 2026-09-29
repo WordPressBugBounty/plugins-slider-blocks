@@ -391,8 +391,8 @@ require GUTSLIDER_DIR . '/admin/views/header.php';
 				<button
 					type="button"
 					class="gs-video"
-					data-gs-video="https://www.youtube-nocookie.com/embed/P9Zj4bSVq4I?autoplay=1"
-					data-gs-video-title="<?php esc_attr_e( 'GutSlider walkthrough', 'slider-blocks' ); ?>"
+					data-gs-video="https://www.youtube-nocookie.com/embed/Hob3WgBTVZI?autoplay=1"
+					data-gs-video-title="<?php esc_attr_e( 'GutSlider: all in one slider and carousel blocks', 'slider-blocks' ); ?>"
 				>
 					<span class="gs-video__stage" aria-hidden="true">
 						<span class="gs-video__slides">
@@ -407,12 +407,12 @@ require GUTSLIDER_DIR . '/admin/views/header.php';
 						</span>
 						<span class="gs-video__play"><?php GutSlider_Admin::icon( 'play' ); ?></span>
 					</span>
-					<span class="screen-reader-text"><?php esc_html_e( 'Play the GutSlider walkthrough', 'slider-blocks' ); ?></span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Play the GutSlider video', 'slider-blocks' ); ?></span>
 				</button>
 				<div class="gs-card__body">
-					<span class="gs-eyebrow"><?php esc_html_e( 'Watch the walkthrough', 'slider-blocks' ); ?></span>
-					<h2 class="gs-card__heading"><?php esc_html_e( 'Build your first slider in three minutes', 'slider-blocks' ); ?></h2>
-					<p class="gs-card__sub"><?php esc_html_e( 'A short tour of the blocks, the controls and the responsive settings.', 'slider-blocks' ); ?></p>
+					<span class="gs-eyebrow"><?php esc_html_e( 'Watch the video', 'slider-blocks' ); ?></span>
+					<h2 class="gs-card__heading"><?php esc_html_e( 'See GutSlider in action', 'slider-blocks' ); ?></h2>
+					<p class="gs-card__sub"><?php esc_html_e( 'The blocks, the ready-made designs and what Pro adds, in one short video.', 'slider-blocks' ); ?></p>
 				</div>
 			</section>
 

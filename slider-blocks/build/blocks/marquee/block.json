@@ -1,7 +1,7 @@
 {
   "apiVersion": 3,
   "name": "gutsliders/marquee",
-  "version": "0.1.0",
+  "version": "3.2.0",
   "title": "Marquee",
   "category": "slider-blocks",
   "description": "Create amazing marquee with any type of content.",
@@ -33,6 +33,9 @@
   "style": [
     "file:./style-index.css",
     "gutslider-swiper-style"
+  ],
+  "viewScript": [
+    "file:./frontend.js"
   ],
   "render": "file:./render.php"
 }

@@ -48,6 +48,13 @@ if ( ! class_exists( 'GutSlider_Admin' ) ) {
 		const SETTINGS_SLUG = 'gutslider-settings';
 
 		/**
+		 * Page slug for the Free vs Pro comparison.
+		 *
+		 * @var string
+		 */
+		const COMPARE_SLUG = 'gutslider-free-vs-pro';
+
+		/**
 		 * Transient holding the cached content-usage scan.
 		 *
 		 * @var string
@@ -242,6 +249,31 @@ if ( ! class_exists( 'GutSlider_Admin' ) ) {
 				self::SETTINGS_SLUG,
 				array( $this, 'render_settings_page' )
 			);
+
+			if ( self::show_compare() ) {
+				add_submenu_page(
+					self::MENU_SLUG,
+					__( 'Free vs Pro', 'slider-blocks' ),
+					__( 'Free vs Pro', 'slider-blocks' ),
+					'manage_options',
+					self::COMPARE_SLUG,
+					array( $this, 'render_compare_page' )
+				);
+			}
+		}
+
+		/**
+		 * Whether the Free vs Pro page is offered.
+		 *
+		 * @return bool True while GutSlider Pro isn't active.
+		 */
+		public static function show_compare() {
+			/**
+			 * Whether the dashboard offers the Free vs Pro comparison.
+			 *
+			 * @param bool $show True while GutSlider Pro isn't active.
+			 */
+			return (bool) apply_filters( 'gutslider_show_pro_compare', ! defined( 'GUTSLIDER_PRO_VERSION' ) );
 		}
 
 		/**
@@ -254,6 +286,7 @@ if ( ! class_exists( 'GutSlider_Admin' ) ) {
 				'toplevel_page_' . self::MENU_SLUG,
 				'gutslider_page_' . self::BLOCKS_SLUG,
 				'gutslider_page_' . self::SETTINGS_SLUG,
+				'gutslider_page_' . self::COMPARE_SLUG,
 				'gutslider_page_gutslider-license',
 			);
 		}
@@ -843,6 +876,21 @@ if ( ! class_exists( 'GutSlider_Admin' ) ) {
 					'total'   => count( $blocks ),
 					'enabled' => self::count_enabled( $blocks ),
 					'current' => self::BLOCKS_SLUG,
+				)
+			);
+		}
+
+		/**
+		 * Render the Free vs Pro screen.
+		 *
+		 * @return void
+		 */
+		public function render_compare_page() {
+			$this->view(
+				'compare-page',
+				array(
+					'blocks'  => $this->get_blocks_with_state(),
+					'current' => self::COMPARE_SLUG,
 				)
 			);
 		}

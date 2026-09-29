@@ -70,6 +70,13 @@ final class Plugin {
 		new Blocks\BlocksCategory();
 		new Blocks\RegisterBlocks();
 		new Blocks\Pattern();
+		new Blocks\VideoEmbeds();
+		new Blocks\PostSliderRest();
+		new Blocks\PostSlider();
+		new Blocks\TermColors();
+		new Blocks\FlexibleSlider();
+		new Blocks\Marquee();
+		new Blocks\StaticSlider();
 		new Assets\EnqueueAssets();
 		new Assets\LoadFonts();
 		new Style\DynamicStyle();

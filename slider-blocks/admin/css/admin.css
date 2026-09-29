@@ -2385,3 +2385,362 @@ input.gs-search__input::-webkit-search-cancel-button {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ------------------------------------------------------------------
+ * 8h. Free vs Pro (dashboard, without Pro)
+ * ---------------------------------------------------------------- */
+
+.gs-compare {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Upgrade banner */
+
+.gs-upsell {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 32px;
+    padding: 32px 36px;
+    overflow: hidden;
+    border-radius: var(--gs-r-lg);
+    background: var(--gs-brand-grad);
+    color: #fff;
+    box-shadow: var(--gs-shadow-lg);
+    isolation: isolate;
+}
+
+.gs-upsell::before,
+.gs-upsell::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.gs-upsell::before {
+    top: -120px;
+    right: -60px;
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 65%);
+}
+
+.gs-upsell::after {
+    bottom: -160px;
+    left: 30%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(255, 196, 92, 0.18), transparent 65%);
+}
+
+.gs-upsell__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.gs-upsell__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    padding: 0 10px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: var(--gs-r-full);
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.gs-upsell__eyebrow svg {
+    width: 14px;
+    height: 14px;
+    color: #ffd27a;
+}
+
+.gs-app .gs-upsell__title {
+    margin: 4px 0 0;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.gs-upsell__sub {
+    max-width: 520px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.gs-upsell__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.gs-upsell__actions .gs-btn {
+    height: 40px;
+    padding: 0 18px;
+}
+
+.gs-upsell__ghost {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: transparent;
+    color: #fff;
+}
+
+.gs-upsell__ghost:hover,
+.gs-upsell__ghost:focus {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.gs-upsell__stats {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gs-upsell__stats li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0;
+    padding: 14px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--gs-r);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+}
+
+.gs-upsell__stats strong {
+    min-width: 58px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.gs-upsell__stats span {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+}
+
+/* Comparison table */
+
+.gs-compare__scroll {
+    position: relative;
+    overflow-x: auto;
+}
+
+.gs-compare__table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 13.5px;
+}
+
+.gs-compare__table th,
+.gs-compare__table td {
+    padding: 12px 20px;
+    border-top: 1px solid var(--gs-line);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.gs-compare__table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-top: 0;
+    background: var(--gs-surface-2);
+    color: var(--gs-text-3);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.gs-compare__table .gs-compare__col {
+    width: 150px;
+    text-align: center;
+}
+
+/* The Pro column is lightly tinted all the way down. */
+.gs-compare__table .gs-compare__col--pro {
+    background: var(--gs-brand-soft);
+    border-left: 1px solid var(--gs-brand-line);
+}
+
+.gs-compare__table thead .gs-compare__col--pro {
+    background: var(--gs-brand-soft);
+}
+
+.gs-compare__badge {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 10px;
+    border-radius: var(--gs-r-full);
+    background: var(--gs-brand);
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+}
+
+.gs-compare__group th {
+    padding-top: 18px;
+    padding-bottom: 8px;
+    background: var(--gs-surface);
+    color: var(--gs-brand);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.gs-compare__table th.gs-compare__feature {
+    font-weight: 400;
+}
+
+.gs-compare__label {
+    display: block;
+    color: var(--gs-text);
+    font-weight: 600;
+}
+
+.gs-compare__hint {
+    display: block;
+    margin-top: 3px;
+    color: var(--gs-text-3);
+    font-size: 12.5px;
+    line-height: 1.45;
+}
+
+.gs-compare__yes {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gs-ok-soft);
+    color: var(--gs-ok);
+}
+
+.gs-compare__yes.is-pro {
+    background: var(--gs-brand);
+    color: #fff;
+}
+
+.gs-compare__yes svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 3;
+}
+
+.gs-compare__no {
+    display: inline-block;
+    width: 12px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--gs-line-strong);
+    vertical-align: middle;
+}
+
+.gs-compare__text {
+    color: var(--gs-text-2);
+    font-weight: 600;
+}
+
+.gs-compare__text.is-pro {
+    color: var(--gs-brand);
+}
+
+.gs-compare__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--gs-line);
+    background: var(--gs-surface-2);
+}
+
+.gs-compare__foot .gs-btn--primary {
+    margin-left: auto;
+}
+
+.gs-compare__note {
+    color: var(--gs-text-2);
+    font-size: 13px;
+}
+
+/* "Free vs Pro" in the top bar. */
+.gs-nav__link--upgrade {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gs-brand);
+}
+
+.gs-nav__link--upgrade svg {
+    width: 14px;
+    height: 14px;
+}
+
+@media (max-width: 1100px) {
+    .gs-upsell {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .gs-upsell__stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gs-upsell__stats li {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 782px) {
+    .gs-upsell {
+        padding: 24px 20px;
+    }
+
+    .gs-app .gs-upsell__title {
+        font-size: 22px;
+    }
+
+    .gs-upsell__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .gs-upsell__stats li {
+        flex-direction: row;
+    }
+
+    .gs-compare__table th,
+    .gs-compare__table td {
+        padding: 10px 14px;
+    }
+
+    .gs-compare__table .gs-compare__col {
+        width: 96px;
+    }
+}

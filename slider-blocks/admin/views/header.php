@@ -31,13 +31,24 @@ $gs_nav = array(
 		'label' => __( 'Settings', 'slider-blocks' ),
 		'url'   => admin_url( 'admin.php?page=gutslider-settings' ),
 	),
-	array(
-		'slug'     => 'gutslider-license',
-		'label'    => $gs_has_pro ? __( 'License', 'slider-blocks' ) : __( 'Pricing', 'slider-blocks' ),
-		'url'      => $gs_has_pro ? admin_url( 'admin.php?page=gutslider-license' ) : 'https://gutslider.com/pricing',
-		'external' => ! $gs_has_pro,
-	),
 );
+
+if ( $gs_has_pro ) {
+	$gs_nav[] = array(
+		'slug'  => 'gutslider-license',
+		'label' => __( 'License', 'slider-blocks' ),
+		'url'   => admin_url( 'admin.php?page=gutslider-license' ),
+	);
+}
+
+if ( GutSlider_Admin::show_compare() ) {
+	$gs_nav[] = array(
+		'slug'    => GutSlider_Admin::COMPARE_SLUG,
+		'label'   => __( 'Free vs Pro', 'slider-blocks' ),
+		'url'     => admin_url( 'admin.php?page=' . GutSlider_Admin::COMPARE_SLUG ),
+		'upgrade' => true,
+	);
+}
 ?>
 <div class="gs-app" data-gs-page="<?php echo esc_attr( $gs_current ); ?>">
 	<header class="gs-bar">
@@ -59,11 +70,14 @@ $gs_nav = array(
 				<?php foreach ( $gs_nav as $gs_item ) : ?>
 					<?php $gs_active = ( $gs_item['slug'] === $gs_current ); ?>
 					<a
-						class="gs-nav__link<?php echo $gs_active ? ' is-active' : ''; ?>"
+						class="gs-nav__link<?php echo $gs_active ? ' is-active' : ''; ?><?php echo empty( $gs_item['upgrade'] ) ? '' : ' gs-nav__link--upgrade'; ?>"
 						href="<?php echo esc_url( $gs_item['url'] ); ?>"
 						<?php echo empty( $gs_item['external'] ) ? '' : 'target="_blank" rel="noopener noreferrer"'; ?>
 						<?php echo $gs_active ? 'aria-current="page"' : ''; ?>
 					>
+						<?php if ( ! empty( $gs_item['upgrade'] ) ) : ?>
+							<?php GutSlider_Admin::icon( 'sparkles' ); ?>
+						<?php endif; ?>
 						<?php echo esc_html( $gs_item['label'] ); ?>
 					</a>
 				<?php endforeach; ?>
