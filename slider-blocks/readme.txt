@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, gutenberg slider, image slider
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 3.2.0
+Stable tag: 3.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -179,6 +179,24 @@ YouTube Terms of Service: https://www.youtube.com/t/terms - Google Privacy Polic
 * [fslightbox](https://fslightbox.com/) - image lightbox for the Photo Carousel block.
 
 == Changelog ==
+= 3.3.0 =
+* Added: Slide Radius in the Flexible, Blog Post and Testimonial sliders
+* Added: Blog Post Slider - "Picked order" for hand-picked posts, with drag and arrow reordering, and Story List colours for the Featured + List design
+* Added: Testimonial - headline for Presets 1 and 2, and a "Top" photo direction for Preset 2
+* Added: Photo Carousel - Top Center and Bottom Center caption positions
+* Added: Brand Logos - Logo Colour: original, grey until hovered, or white for dark backgrounds
+* Added: Progress bar size now works in the Logo and Photo carousels
+* Fixed: Fade effect showing the text of two slides at once
+* Fixed: Static Slider - content margin cancelled the left/right content alignment
+* Fixed: Flexible Slider - content and slide padding overflowing on phones, Hero design ignoring Content Padding, and slides collapsing with more than one grid row
+* Fixed: Testimonial - content cut off on phones, star colour ignored by the modern designs, and pagination dots covering Preset 2 cards
+* Fixed: Blog Post Slider - category filter ignoring term ids, and an unused copy of the posts saved in the block
+* Fixed: Video Carousel - poster covering silent-loop videos, and Cards pagination outside the panel
+* Fixed: Navigation and pagination not working on newly inserted Logo, Photo, Blog Post, Testimonial and Video sliders until another setting was changed
+* Fixed: Line height of 1.15 printed as 1.15px, and settings saved without a value printing invalid CSS
+* Fixed: Mouse wheel control holding the page; the page now scrolls on at the first and last slide
+* Fixed: Linked padding or border width of 0 set from code being ignored
+
 = 3.2.0 =
 * Added: Design picker with ready-made designs in the Static, Flexible, Testimonial, Photo, Before After, Video, Blog Post and Marquee blocks
 * Added: Marquee - rewritten motion engine with a steady speed in pixels per second, new designs, separators, item width and alignment, fade edges, slow down on hover, and a "Preview motion" button in the editor
@@ -270,6 +288,9 @@ YouTube Terms of Service: https://www.youtube.com/t/terms - Google Privacy Polic
 For the full release history, see [changelog.txt](https://plugins.svn.wordpress.org/slider-blocks/trunk/changelog.txt).
 
 == Upgrade Notice ==
+
+= 3.3.0 =
+New slide radius, picked post order, logo colour and caption options, and many layout fixes for phones. Existing sliders keep working without block recovery.
 
 = 3.2.0 =
 Big design update: a design picker in every block, a rebuilt Marquee, interactive motion effects for the Static Slider, faster video setup and many fixes. Existing sliders keep working without block recovery.
