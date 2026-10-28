@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, gutenberg slider, image slider
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 3.3.0
+Stable tag: 3.3.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -179,6 +179,10 @@ YouTube Terms of Service: https://www.youtube.com/t/terms - Google Privacy Polic
 * [fslightbox](https://fslightbox.com/) - image lightbox for the Photo Carousel block.
 
 == Changelog ==
+= 3.3.1 =
+* Added: A one-time, dismissible request for a WordPress.org review, shown a week after install on sites that use GutSlider blocks
+* Added: Dismissible notices for seasonal GutSlider Pro offers, shown only to admins on the Dashboard, Plugins and GutSlider screens
+
 = 3.3.0 =
 * Added: Slide Radius in the Flexible, Blog Post and Testimonial sliders
 * Added: Blog Post Slider - "Picked order" for hand-picked posts, with drag and arrow reordering, and Story List colours for the Featured + List design
