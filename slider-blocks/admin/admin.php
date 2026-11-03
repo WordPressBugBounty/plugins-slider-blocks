@@ -791,6 +791,7 @@ if ( ! class_exists( 'GutSlider_Admin' ) ) {
 				'before-after'                => 'columns',
 				'videos-carousel'             => 'video',
 				'post-slider'                 => 'newspaper',
+				'backdrop-slider'             => 'layers',
 				'shader-slider'               => 'sparkles',
 				'shutters-slider'             => 'blinds',
 				'slicer-slider'               => 'scissors',
@@ -1167,3 +1168,13 @@ if ( ! class_exists( 'GutSlider_Admin' ) ) {
 }
 
 new GutSlider_Admin();
+
+// Cartlet recommendation in the dashboard sidebar (WooCommerce sites only).
+if ( is_admin() ) {
+	require_once GUTSLIDER_DIR . '/admin/cartlet-card.php';
+	( new GutSlider_Cartlet_Card(
+		'toplevel_page_' . GutSlider_Admin::MENU_SLUG,
+		GUTSLIDER_URL . 'admin/img/cartlet.png',
+		'gutslider_dashboard_sidebar'
+	) )->register();
+}

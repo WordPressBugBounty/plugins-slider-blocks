@@ -92,6 +92,14 @@ return apply_filters(
 			'active'      => true,
 		),
 		array(
+			'name'        => 'backdrop-slider',
+			'title'       => __( 'Backdrop', 'slider-blocks' ),
+			'description' => __( 'One fixed background with static or dynamic content sliding over it.', 'slider-blocks' ),
+			'is_pro'      => false,
+			'demo_slug'   => 'backdrop',
+			'active'      => true,
+		),
+		array(
 			'name'        => 'shader-slider',
 			'title'       => __( 'Shader Slider', 'slider-blocks' ),
 			'description' => __( 'Interactive shader slider for static and dynamic content.', 'slider-blocks' ),
