@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, gutenberg slider, image slider
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 3.4.0
+Stable tag: 3.4.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -193,6 +193,9 @@ YouTube Terms of Service: https://www.youtube.com/t/terms - Google Privacy Polic
 * [fslightbox](https://fslightbox.com/) - image lightbox for the Photo Carousel block.
 
 == Changelog ==
+= 3.4.1 =
+* Changed: The seasonal GutSlider Pro offer notice now reflects the early Black Friday sale (live until 1 December)
+
 = 3.4.0 =
 * Added: Backdrop Slider block - one fixed background (colour, gradient or image, with an overlay) with slides of any blocks changing over it
 * Added: Backdrop Slider - Slide, Fade and Rise effects, content position, responsive height, width and padding, arrow and pagination styling, and a pause button for autoplay

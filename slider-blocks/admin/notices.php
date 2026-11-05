@@ -88,20 +88,20 @@ if ( ! class_exists( 'GutSlider_Notices' ) ) {
 
 			$campaigns = array(
 				array(
-					'id'           => 'bf2026_teaser',
+					'id'           => 'bf2026_early',
 					'start'        => '2026-11-10 00:00:00',
 					'end'          => '2026-11-23 23:59:59',
-					'title'        => __( 'GutSlider Pro Black Friday starts 24 November', 'slider-blocks' ),
-					'text'         => __( 'Save up to 40% on GutSlider Pro, for one week only. Join the list to get early access before the sale opens.', 'slider-blocks' ),
-					'action_label' => __( 'Get early access', 'slider-blocks' ),
-					'action_url'   => 'https://gutslider.com/black-friday/' . $utm . '&utm_content=teaser',
+					'title'        => __( 'Early Black Friday: GutSlider Pro lifetime from $69', 'slider-blocks' ),
+					'text'         => __( 'The Black Friday prices are live now: lifetime from $69 and 40% off yearly plans. 15 Pro blocks, 70+ designs and WooCommerce carousels. Ends 1 December.', 'slider-blocks' ),
+					'action_label' => __( 'Get the deal', 'slider-blocks' ),
+					'action_url'   => 'https://gutslider.com/black-friday/' . $utm . '&utm_content=early',
 				),
 				array(
 					'id'           => 'bf2026_sale',
 					'start'        => '2026-11-24 00:00:00',
 					'end'          => '2026-12-01 23:59:59',
 					'title'        => __( 'Black Friday: GutSlider Pro lifetime from $69', 'slider-blocks' ),
-					'text'         => __( 'Save up to 33% on lifetime and 40% on yearly plans. 15 Pro blocks, 70+ designs and WooCommerce carousels. Ends 1 December.', 'slider-blocks' ),
+					'text'         => __( 'Lifetime from $69 and 40% off yearly plans. 15 Pro blocks, 70+ designs and WooCommerce carousels. Ends 1 December.', 'slider-blocks' ),
 					'action_label' => __( 'Get the deal', 'slider-blocks' ),
 					'action_url'   => 'https://gutslider.com/black-friday/' . $utm . '&utm_content=sale',
 				),
