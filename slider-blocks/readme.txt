@@ -3,7 +3,7 @@ Contributors: binsaifullah
 Tags: slider, carousel, slider block, gutenberg slider, image slider
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 3.4.1
+Stable tag: 3.4.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -48,7 +48,7 @@ Pick a ready-made design, drop in your content, and see the result live in the e
 * **[Video Carousel](https://demos.gutslider.com/videos-carousel/)** - YouTube and Vimeo videos. Add many links at once, and titles and thumbnails fill in by themselves.
 * **[Blog Post Slider](https://demos.gutslider.com/post-slider/)** - dynamic post slider with query controls, related posts and Magazine Hero and Card Carousel designs.
 * **Backdrop Slider** - one fixed background (colour, gradient or image, with an overlay) while slides of any blocks change over it. Ideal for hero sections.
-* **[Marquee](https://demos.gutslider.com/)** - an endlessly scrolling strip for logos, text or images, with Logo Strip, Text Ticker and Announcement Bar designs, a steady pixel speed, separators, fade edges, slow down or stop on hover, and a live motion preview in the editor.
+* **[Content Marquee](https://demos.gutslider.com/)** - an endlessly scrolling strip for logos, text or images, with Logo Strip, Text Ticker and Announcement Bar designs, a steady pixel speed, separators, fade edges, slow down or stop on hover, and a live motion preview in the editor.
 
 ### 🚀 GutSlider Pro: Make Every Slider Stand Out
 
@@ -81,7 +81,7 @@ The free blocks cover the essentials. **[GutSlider Pro](https://gutslider.com/pr
 * **Before After** - Glass Handle, Rounded Card, Split Labels and Dark Studio.
 * **Video Carousel** - Cinema, Playlist and Video Cards.
 * **Blog Post Slider** - Overlay Grid, Featured + List and Minimal Timeline.
-* **Marquee** - Testimonials, Image Strip and Tag Cloud.
+* **Content Marquee** - Testimonials, Image Strip and Tag Cloud.
 
 **Premium features**
 
@@ -193,6 +193,10 @@ YouTube Terms of Service: https://www.youtube.com/t/terms - Google Privacy Polic
 * [fslightbox](https://fslightbox.com/) - image lightbox for the Photo Carousel block.
 
 == Changelog ==
+= 3.4.2 =
+* Changed: New outline icons for every free block, in the same style as the GutSlider Pro blocks
+* Changed: The free Marquee block is now called Content Marquee, so it is easy to tell apart from the Pro Marquee Carousel
+
 = 3.4.1 =
 * Changed: The seasonal GutSlider Pro offer notice now reflects the early Black Friday sale (live until 1 December)
 

@@ -2,9 +2,9 @@
   "apiVersion": 3,
   "name": "gutsliders/marquee",
   "version": "3.3.0",
-  "title": "Marquee",
+  "title": "Content Marquee",
   "category": "slider-blocks",
-  "description": "Create amazing marquee with any type of content.",
+  "description": "An endlessly scrolling strip of any content: text, logos, images or testimonials.",
   "supports": {
     "html": false,
     "anchor": true,
